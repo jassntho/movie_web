@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="./assets/images/icon.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Alata' rel='stylesheet'>
+  <title>MyWeb</title> 
+
+  <!--
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <link rel="stylesheet" href="./assets/css/media_query.css">
+
+  <!--
+    - google font link
+  -->
+  <link href="https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900" rel="stylesheet" />
+</head>
+
+<body>
+
+
+
+
+  <!--
+    - main container
+  -->
+
+  <!--
+    navbar 
+  -->
+  <header>
+    <div class="navbar">
+      <!-- menu button for small screen -->
+      <button class="navbar-menu-btn">
+        <span class="one"></span>
+        <span class="two"></span>
+        <span class="three"></span>
+      </button>
+
+      <a href="#" class="navbar-brand">
+        <img src="./assets/images/logo.png" alt="">
+      </a>
+
+      <!-- navbar navigation -->
+      <nav>
+        <ul class="navbar-nav">
+          <li> <a href="#" class="navbar-link">Trang chủ</a> </li>
+          <li> <a href="#" class="navbar-link">Phim lẻ</a> </li>
+          <li> <a href="#" class="navbar-link">Phim bộ</a> </li>
+          <li class="dropdown">
+            <a href="#" class="navbar-link">Thể loại</a>
+            <ul class="dropdown-content">
+              <li><a href="#">Hành Động</a></li>
+              <li><a href="#">Cổ Trang</a></li>
+              <li><a href="#">Tâm Lý</a></li>
+              <li><a href="#">Tình Cảm</a></li>
+              <li><a href="#">Kinh Dị</a></li>
+              <li><a href="#">Võ Thuât</a></li>
+              <li><a href="#">Chiến Tranh</a></li>
+              <li><a href="#">Kịch Tính</a></li>
+              <li><a href="#">Phiêu Lưu</a></li>
+              <li><a href="#">Gia Đình</a></li>
+              <li><a href="#">Viễn Tưởng</a></li>
+              <li><a href="#">Âm Nhạc</a></li>
+              <li><a href="#">Thần thoại</a></li>
+              <li><a href="#">Khoa Học</a></li>
+              <li><a href="#">Hài</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="navbar-link">Quốc gia</a>
+            <ul class="dropdown-content">
+              <li><a href="#">Việt Nam</a></li>
+              <li><a href="#">Âu Mỹ</a></li>
+              <li><a href="#">Hồng Kông</a></li>
+              <li><a href="#">Hàn Quốc</a></li>
+              <li><a href="#">Nhật Bản</a></li>
+              <li><a href="#">Philipines</a></li>
+              <li><a href="#">Thụy Điển</a></li>
+              <li><a href="#">Thái Lan</a></li>
+              <li><a href="#">Ấn Độ</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- search and sign-in -->
+      <div class="navbar-actions">
+        <form action="#" class="navbar-form">
+          <input type="text" name="search" placeholder="I'm looking for..." class="navbar-form-search">
+          <button class="navbar-form-btn">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+          <button class="navbar-form-close">
+            <ion-icon name="close-circle-outline"></ion-icon>
+          </button>
+        </form>
+
+        <!-- search button for small screen -->
+        <button class="navbar-search-btn">
+          <ion-icon name="search-outline"></ion-icon>
+        </button>
+
+        <a href="#" class="navbar-signin">
+          <span>Sign in</span>
+          <ion-icon name="log-in-outline"></ion-icon>
+        </a>
+      </div>
+    </div>
+  </header>
+
+    <!--
+      - MAIN SECTION
+    -->
+    <main>
+
+      <!--
+        - #BANNER SECTION
+      -->
+      <section class="banner">
+        <div class="banner-wrapper">
+          <div class="banner-container">
+              <div class="banner-card">
+                  <img src="./assets/images/godzilla-x-kong-de-che-moi.jpg" class="banner-img" alt="">
+                    <div class="card-content">
+                      <div class="card-info">
+                        <div class="genre">
+                          <ion-icon name="film"></ion-icon>
+                          <span>Hành Động / Viễn Tưởng / Chiếu Rạp</span>
+                        </div>
+                        <div class="year">
+                          <ion-icon name="calendar"></ion-icon>
+                          <span>2024</span>
+                        </div>
+                        <div class="duration">
+                          <ion-icon name="time"></ion-icon>
+                          <span>114</span>
+                        </div>
+                      </div>
+                      <h2 class="card-title">GodzillaXKong: Đế chế mới</h2>
+                    </div>
+              </div>
+              <div class="banner-card">
+                  <img src="./assets/images/kungfu-panda-4.jpg  " class="banner-img" alt="">
+                    <div class="card-content">
+                      <div class="card-info">
+                        <div class="genre">
+                          <ion-icon name="film"></ion-icon>
+                          <span>Hành Động / Hoạt Hình / Chiếu Rạp</span>
+                        </div>
+                        <div class="year">
+                          <ion-icon name="calendar"></ion-icon>
+                          <span>2024</span>
+                        </div>
+                        <div class="duration">
+                          <ion-icon name="time"></ion-icon>
+                          <span>94</span>
+                        </div>
+                      </div>
+                      <h2 class="card-title">Kung Fu Panda 4</h2>
+                    </div>
+              </div>
+              <div class="banner-card">
+                <img src="./assets/images/meo-di-hia-dieu-uoc-cuoi-cung.jpg" class="banner-img" alt="">
+                  <div class="card-content">
+                    <div class="card-info">
+                      <div class="genre">
+                        <ion-icon name="film"></ion-icon>
+                        <span>Hoạt Hình / Chiếu Rạp</span>
+                      </div>
+                      <div class="year">
+                        <ion-icon name="calendar"></ion-icon>
+                        <span>2022</span>
+                      </div>
+                      <div class="duration">
+                        <ion-icon name="time"></ion-icon>
+                        <span>102</span>
+                      </div>
+                    </div>
+                    <h2 class="card-title">Mèo đi hia: Điều ước cuối cùng</h2>
+                  </div>
+              </div>
+              <div class="banner-card">
+                <img src="./assets/images/pyramid-game.jpg" class="banner-img" alt="">
+                  <div class="card-content">
+                    <div class="card-info">
+                      <div class="genre">
+                        <ion-icon name="film"></ion-icon>
+                        <span>Tâm Lý</span>
+                      </div>
+                      <div class="year">
+                        <ion-icon name="calendar"></ion-icon>
+                        <span>2024</span>
+                      </div>
+                      <div class="duration">
+                        <ion-icon name="time"></ion-icon>
+                        <span>53</span>
+                      </div>
+                    </div>
+                    <h2 class="card-title">Pyramid Game</h2>
+                  </div>
+              </div>
+              <div class="banner-card">
+                <img src="./assets/images/Phim-Bong-dung-trung-so-review.jpg" class="banner-img" alt="">
+                  <div class="card-content">
+                    <div class="card-info">
+                      <div class="genre">
+                        <ion-icon name="film"></ion-icon>
+                        <span>Tâm Lý</span>
+                      </div>
+                      <div class="year">
+                        <ion-icon name="calendar"></ion-icon>
+                        <span>2022</span>
+                      </div>
+                      <div class="duration">
+                        <ion-icon name="time"></ion-icon>
+                        <span>113</span>
+                      </div>
+                    </div>
+                    <h2 class="card-title">Bỗng Dưng Trúng Số</h2>
+                  </div>
+              </div>    
+          </div>
+        </div>
+ 
+  <div class="dots">
+    <!-- Add a dot for each banner-card -->
+    <span class="dot active" onclick="currentSlide(0)"></span>
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+    <span class="dot" onclick="currentSlide(4)"></span>
+    <!-- Add more dots as needed -->
+  </div>
+</section>
+
+    
+    
+  
+
+      <!--
+        - #MOVIES SECTION
+      -->
+      <section class="movies">
+
+        <!--
+          - filter bar  
+        -->   
+        <!--
+          HOT-BAR
+        -->
+        <script>
+          document.addEventListener("DOMContentLoaded", function() {
+            const titles = document.querySelectorAll(".movie-list-A .title");
+            titles.forEach(title => {
+              if (title.textContent.length > 20) { // Adjust length as needed
+                title.textContent = title.textContent.substring(0, 17) + '...'; // Adjust truncation as needed
+              }
+            });
+          });
+        </script>
+        
+        <div class="Hot-bar">
+          <div class="container1-title">
+            <h4 style="color: #bada55;">HOT</h4>
+          </div>
+          <div class="movie-list-A">
+            <a rel="bookmark" href="#">
+              <div class="image"> 
+                <img src="./assets/images/movies/godzilla-x-kong-de-che-moi-thumb.jpg" alt="#">
+                <div class="rank">#1</div>
+                <div class="play-overlay"><i class="fas fa-play"></i></div>
+              </div>
+              <div class="text-info">
+                <div class="title">GodzillaXKong: Đế chế mới</div>
+                <p class="movie-list-info">
+                  <span class="movie-list-info-vote">★ 7.4</span>
+                  <span class="movie-list-info-eps">
+                    <i class="fas fa-clock"></i>
+                    1/1
+                  </span>
+                  <span class="movie-list-info-year">
+                    <i class="fas fa-calendar-alt"></i>
+                    2024
+                  </span>
+                </p>
+              </div>
+            </a>
+          </div>
+          
+          <div class="movie-list-A">
+            <a rel="bookmark" href="#">
+              <div class="image"> 
+                <img src="./assets/images/movies/cong-phu-gau-truc-4.jpg" alt="#">
+                <div class="rank">#2</div>
+                <div class="play-overlay"><i class="fas fa-play"></i></div>
+              </div>
+              <div class="text-info">
+                <div class="title">Kung Fu Panda 4</div>
+                <p class="movie-list-info">
+                  <span class="movie-list-info-vote">★ 7.4</span>
+                  <span class="movie-list-info-eps">
+                    <i class="fas fa-clock"></i>
+                    1/1
+                  </span>
+                  <span class="movie-list-info-year">
+                    <i class="fas fa-calendar-alt"></i>
+                    2024
+                  </span>
+                </p>
+              </div>
+            </a>
+          </div>
+
+          <div class="movie-list-A">
+            <a rel="bookmark" href="#">
+              <div class="image"> 
+                <img src="./assets/images/movies/meo-di-hia-dieu-uoc-cuoi-cung-thumb.jpg" alt="#">
+                <div class="rank">#3</div>
+                <div class="play-overlay"><i class="fas fa-play"></i></div>
+              </div>
+              <div class="text-info">
+                <div class="title">Mèo đi hia: Điều ước cuối cùng</div>
+                <p class="movie-list-info">
+                  <span class="movie-list-info-vote">★ 7.4</span>
+                  <span class="movie-list-info-eps">
+                    <i class="fas fa-clock"></i>
+                    1/1
+                  </span>
+                  <span class="movie-list-info-year">
+                    <i class="fas fa-calendar-alt"></i>
+                    2022
+                  </span>
+                </p>
+              </div>
+            </a>
+          </div>
+
+          <div class="movie-list-A">
+            <a rel="bookmark" href="#">
+              <div class="image"> 
+                <img src="./assets/images/movies/tro-choi-kim-tu-thap.jpg" alt="#">
+                <div class="rank">#4</div>
+                <div class="play-overlay"><i class="fas fa-play"></i></div>
+              </div>
+              <div class="text-info">
+                <div class="title">Pyramid Game</div>
+                <p class="movie-list-info">
+                  <span class="movie-list-info-vote">★ 7.4</span>
+                  <span class="movie-list-info-eps">
+                    <i class="fas fa-clock"></i>
+                    2/10
+                  </span>
+                  <span class="movie-list-info-year">
+                    <i class="fas fa-calendar-alt"></i>
+                    2024
+                  </span>
+                </p>
+              </div>
+            </a>
+          </div>
+
+          <div class="movie-list-A">
+            <a rel="bookmark" href="#">
+              <div class="image"> 
+                <img src="./assets/images/movies/Bong_Dung_Trung_So.jpg" alt="#">
+                <div class="rank">#5</div>
+                <div class="play-overlay"><i class="fas fa-play"></i></div>
+              </div>
+              <div class="text-info">
+                <div class="title">Bỗng Dưng Trúng Số</div>
+                <p class="movie-list-info">
+                  <span class="movie-list-info-vote">★ 7.4</span>
+                  <span class="movie-list-info-eps">
+                    <i class="fas fa-clock"></i>
+                    1/1
+                  </span>
+                  <span class="movie-list-info-year">
+                    <i class="fas fa-calendar-alt"></i>
+                    2022
+                  </span>
+                </p>
+              </div>
+            </a>
+          </div>
+
+          <div class="movie-list-A">
+            <a rel="bookmark" href="#">
+              <div class="image"> 
+                <img src="./assets/images/movies/biet-doi-san-ma-ky-nguyen-bang-gia-thumb.jpg" alt="#">
+                <div class="rank">#6</div>
+                <div class="play-overlay"><i class="fas fa-play"></i></div>
+              </div>
+              <div class="text-info">
+                <div class="title">Biệt đội săn ma: Kỷ nguyên băng giá</div>
+                <p class="movie-list-info">
+                  <span class="movie-list-info-vote">★ 7.4</span>
+                  <span class="movie-list-info-eps">
+                    <i class="fas fa-clock"></i>
+                    1/1
+                  </span>
+                  <span class="movie-list-info-year">
+                    <i class="fas fa-calendar-alt"></i>
+                    2024
+                  </span>
+                </p>
+              </div>
+            </a>
+          </div>
+
+          <div class="movie-list-A">
+            <a rel="bookmark" href="#">
+              <div class="image"> 
+                <img src="./assets/images/movies/animevsub-uuB264BvCF.jpg" alt="#">
+                <div class="rank">#7</div>
+                <div class="play-overlay"><i class="fas fa-play"></i></div>
+              </div>
+              <div class="text-info">
+                <div class="title">Crayon Shin-chan Movie 31</div>
+                <p class="movie-list-info">
+                  <span class="movie-list-info-vote">★ 7.4</span>
+                  <span class="movie-list-info-eps">
+                    <i class="fas fa-clock"></i>
+                    1/1
+                  </span>
+                  <span class="movie-list-info-year">
+                    <i class="fas fa-calendar-alt"></i>
+                    2023
+                  </span>
+                </p>
+              </div>
+            </a>
+          </div>
+
+          <div class="movie-list-A">
+            <a rel="bookmark" href="#">
+              <div class="image"> 
+                <img src="./assets/images/movies/yeu_em_ty_cai_nhin_dau_tien.jpg" alt="#">
+                <div class="rank">#8</div>
+                <div class="play-overlay"><i class="fas fa-play"></i></div>
+              </div>
+              <div class="text-info">
+                <div class="title">Yêu em từ cái nhìn đầu tiên</div>
+                <p class="movie-list-info">
+                  <span class="movie-list-info-vote">★ 7.4</span>
+                  <span class="movie-list-info-eps">
+                    <i class="fas fa-clock"></i>
+                    3/20
+                  </span>
+                  <span class="movie-list-info-year">
+                    <i class="fas fa-calendar-alt"></i>
+                    2016
+                  </span>
+                </p>
+              </div>
+            </a>
+          </div>
+
+          <div class="movie-list-A">
+            <a rel="bookmark" href="#">
+              <div class="image"> 
+                <img src="./assets/images/movies/hy-vong.jpg" alt="#">
+                <div class="rank">#9</div>
+                <div class="play-overlay"><i class="fas fa-play"></i></div>
+              </div>
+              <div class="text-info">
+                <div class="title">Hope</div>
+                <p class="movie-list-info">
+                  <span class="movie-list-info-vote">★ 7.4</span>
+                  <span class="movie-list-info-eps">
+                    <i class="fas fa-clock"></i>
+                    1/1
+                  </span>
+                  <span class="movie-list-info-year">
+                    <i class="fas fa-calendar-alt"></i>
+                    2013
+                  </span>
+                </p>
+              </div>
+            </a>
+          </div>
+
+          
+        </div>
+        <!--
+          FILTER-BAR
+        -->
+        <div class="filter-bar">
+
+            <div class="filter-dropdowns">
+
+              <select name="genre" class="genre">
+                <option value="all genres">All genres</option>
+                <option value="action">Action</option>
+                <option value="adventure">Adventure</option>
+                <option value="animal">Animal</option>
+                <option value="animation">Animation</option>
+                <option value="biography">Biography</option>
+              </select>
+
+              <select name="year" class="year">
+                <option value="all years">All the years</option>
+                <option value="2022">2022</option>
+                <option value="2020-2021">2020-2021</option>
+                <option value="2010-2019">2010-2019</option>
+                <option value="2000-2009">2000-2009</option>
+                <option value="1980-1999">1980-1999</option>
+              </select>
+
+            </div>
+
+        </div>
+
+
+          <!--
+            - movies grid
+          -->
+        <div class="movies-grid-column-8">
+            
+                <div class="movie-card">
+
+                  <div class="card-head">
+                    <img src="./assets/images/movies/red-notice.jpg" alt="" class="card-img">
+
+                    <div class="card-overlay">
+
+                      <div class="bookmark">
+                        <ion-icon name="bookmark-outline"></ion-icon>
+                      </div>
+
+                      <div class="rating">
+                        <ion-icon name="star-outline"></ion-icon>
+                        <span>6.4</span>
+                      </div>
+
+                      <div class="play">
+                        <ion-icon name="play-circle-outline"></ion-icon>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="card-body">
+                    <h3 class="card-title">Red Notice</h3>
+
+                    <div class="card-info">
+                      <span class="genre">Action/Comedy</span>
+                      <span class="year">2021</span>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="movie-card">
+
+                  <div class="card-head">
+                    <img src="./assets/images/movies/spider-men.jpg" alt="" class="card-img">
+
+                    <div class="card-overlay">
+
+                      <div class="bookmark">
+                        <ion-icon name="bookmark-outline"></ion-icon>
+                      </div>
+
+                      <div class="rating">
+                        <ion-icon name="star-outline"></ion-icon>
+                        <span>7.4</span>
+                      </div>
+
+                      <div class="play">
+                        <ion-icon name="play-circle-outline"></ion-icon>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="card-body">
+                    <h3 class="card-title">Spider-Man: Homecoming</h3>
+
+                    <div class="card-info">
+                      <span class="genre">Action/Adventure</span>
+                      <span class="year">2017</span>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="movie-card">
+
+                  <div class="card-head">
+                    <img src="./assets/images/movies/matrix.jpg" alt="" class="card-img">
+
+                    <div class="card-overlay">
+
+                      <div class="bookmark">
+                        <ion-icon name="bookmark-outline"></ion-icon>
+                      </div>
+
+                      <div class="rating">
+                        <ion-icon name="star-outline"></ion-icon>
+                        <span>N/A</span>
+                      </div>
+
+                      <div class="play">
+                        <ion-icon name="play-circle-outline"></ion-icon>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="card-body">
+                    <h3 class="card-title">The Matrix Resurrections</h3>
+
+                    <div class="card-info">
+                      <span class="genre">Sci-fi/Action</span>
+                      <span class="year">2021</span>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="movie-card">
+
+                  <div class="card-head">
+                    <img src="./assets/images/movies/eternals.jpg" alt="" class="card-img">
+
+                    <div class="card-overlay">
+
+                      <div class="bookmark">
+                        <ion-icon name="bookmark-outline"></ion-icon>
+                      </div>
+
+                      <div class="rating">
+                        <ion-icon name="star-outline"></ion-icon>
+                        <span>6.8</span>
+                      </div>
+
+                      <div class="play">
+                        <ion-icon name="play-circle-outline"></ion-icon>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="card-body">
+                    <h3 class="card-title">Eternals</h3>
+
+                    <div class="card-info">
+                      <span class="genre">Adventure/Action</span>
+                      <span class="year">2021</span>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="movie-card">
+
+                  <div class="card-head">
+                    <img src="./assets/images/movies/dune.jpg" alt="" class="card-img">
+
+                    <div class="card-overlay">
+
+                      <div class="bookmark">
+                        <ion-icon name="bookmark-outline"></ion-icon>
+                      </div>
+
+                      <div class="rating">
+                        <ion-icon name="star-outline"></ion-icon>
+                        <span>8.2</span>
+                      </div>
+
+                      <div class="play">
+                        <ion-icon name="play-circle-outline"></ion-icon>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="card-body">
+                    <h3 class="card-title">Dune</h3>
+
+                    <div class="card-info">
+                      <span class="genre">Sci-fi/Adventure</span>
+                      <span class="year">2021</span>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="movie-card">
+
+                  <div class="card-head">
+                    <img src="./assets/images/movies/1917.jpg" alt="" class="card-img">
+
+                    <div class="card-overlay">
+
+                      <div class="bookmark">
+                        <ion-icon name="bookmark-outline"></ion-icon>
+                      </div>
+
+                      <div class="rating">
+                        <ion-icon name="star-outline"></ion-icon>
+                        <span>8.3</span>
+                      </div>
+
+                      <div class="play">
+                        <ion-icon name="play-circle-outline"></ion-icon>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="card-body">
+                    <h3 class="card-title">1917</h3>
+
+                    <div class="card-info">
+                      <span class="genre">War/Drama</span>
+                      <span class="year">2019</span>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="movie-card">
+
+                  <div class="card-head">
+                    <img src="./assets/images/movies/shang-chi.jpg" alt="" class="card-img">
+
+                    <div class="card-overlay">
+
+                      <div class="bookmark">
+                        <ion-icon name="bookmark-outline"></ion-icon>
+                      </div>
+
+                      <div class="rating">
+                        <ion-icon name="star-outline"></ion-icon>
+                        <span>7.6</span>
+                      </div>
+
+                      <div class="play">
+                        <ion-icon name="play-circle-outline"></ion-icon>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="card-body">
+                    <h3 class="card-title">Shang-Chi and The Legend of The Ten Rings</h3>
+
+                    <div class="card-info">
+                      <span class="genre">Action/Fantasy</span>
+                      <span class="year">2021</span>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="movie-card">
+
+                  <div class="card-head">
+                    <img src="./assets/images/movies/casino-royale.jpg" alt="" class="card-img">
+
+                    <div class="card-overlay">
+
+                      <div class="bookmark">
+                        <ion-icon name="bookmark-outline"></ion-icon>
+                      </div>
+
+                      <div class="rating">
+                        <ion-icon name="star-outline"></ion-icon>
+                        <span>8.0</span>
+                      </div>
+
+                      <div class="play">
+                        <ion-icon name="play-circle-outline"></ion-icon>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="card-body">
+                    <h3 class="card-title">Casino Royale</h3>
+
+                    <div class="card-info">
+                      <span class="genre">Action/Adventure</span>
+                      <span class="year">2006</span>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="movie-card">
+
+                  <div class="card-head">
+                    <img src="./assets/images/movies/dark-knight.jpg" alt="" class="card-img">
+
+                    <div class="card-overlay">
+
+                      <div class="bookmark">
+                        <ion-icon name="bookmark-outline"></ion-icon>
+                      </div>
+
+                      <div class="rating">
+                        <ion-icon name="star-outline"></ion-icon>
+                        <span>9.0</span>
+                      </div>
+
+                      <div class="play">
+                        <ion-icon name="play-circle-outline"></ion-icon>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="card-body">
+                    <h3 class="card-title">The Dark Knight</h3>
+
+                    <div class="card-info">
+                      <span class="genre">Action/Adventure</span>
+                      <span class="year">2008</span>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="movie-card">
+
+                  <div class="card-head">
+                    <img src="./assets/images/movies/panther.jpg" alt="" class="card-img">
+
+                    <div class="card-overlay">
+
+                      <div class="bookmark">
+                        <ion-icon name="bookmark-outline"></ion-icon>
+                      </div>
+
+                      <div class="rating">
+                        <ion-icon name="star-outline"></ion-icon>
+                        <span>7.3</span>
+                      </div>
+
+                      <div class="play">
+                        <ion-icon name="play-circle-outline"></ion-icon>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="card-body">
+                    <h3 class="card-title">Black Panther</h3>
+
+                    <div class="card-info">
+                      <span class="genre">Action/Adventure</span>
+                      <span class="year">2018</span>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="movie-card">
+
+                  <div class="card-head">
+                    <img src="./assets/images/movies/venom.jpg" alt="" class="card-img">
+
+                    <div class="card-overlay">
+
+                      <div class="bookmark">
+                        <ion-icon name="bookmark-outline"></ion-icon>
+                      </div>
+
+                      <div class="rating">
+                        <ion-icon name="star-outline"></ion-icon>
+                        <span>6.7</span>
+                      </div>
+
+                      <div class="play">
+                        <ion-icon name="play-circle-outline"></ion-icon>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="card-body">
+                    <h3 class="card-title">Venom</h3>
+
+                    <div class="card-info">
+                      <span class="genre">Action/Adventure</span>
+                      <span class="year">2018</span>
+                    </div>
+                  </div>
+
+                </div>
+
+                
+
+
+
+
+                <div class="movie-card">
+
+                  <div class="card-head">
+                    <img src="./assets/images/movies/gladiator.jpg" alt="" class="card-img">
+
+                    <div class="card-overlay">
+
+                      <div class="bookmark">
+                        <ion-icon name="bookmark-outline"></ion-icon>
+                      </div>
+
+                      <div class="rating">
+                        <ion-icon name="star-outline"></ion-icon>
+                        <span>8.5</span>
+                      </div>
+
+                      <div class="play">
+                        <ion-icon name="play-circle-outline"></ion-icon>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="card-body">
+                    <h3 class="card-title">Gladiator</h3>
+
+                    <div class="card-info">
+                      <span class="genre">Action/Adventure</span>
+                      <span class="year">2000</span>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="movie-card">
+
+                  <div class="card-head">
+                    <img src="./assets/images/movies/endgame.jpg" alt="" class="card-img">
+
+                    <div class="card-overlay">
+
+                      <div class="bookmark">
+                        <ion-icon name="bookmark-outline"></ion-icon>
+                      </div>
+
+                      <div class="rating">
+                        <ion-icon name="star-outline"></ion-icon>
+                        <span>8.4</span>
+                      </div>
+
+                      <div class="play">
+                        <ion-icon name="play-circle-outline"></ion-icon>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="card-body">
+                    <h3 class="card-title">Avengers: Endgame</h3>
+
+                    <div class="card-info">
+                      <span class="genre">Action/Sci-fi</span>
+                      <span class="year">2019</span>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="movie-card">
+
+                  <div class="card-head">
+                    <img src="./assets/images/movies/ww84.jpg" alt="" class="card-img">
+
+                    <div class="card-overlay">
+
+                      <div class="bookmark">
+                        <ion-icon name="bookmark-outline"></ion-icon>
+                      </div>
+
+                      <div class="rating">
+                        <ion-icon name="star-outline"></ion-icon>
+                        <span>5.4</span>
+                      </div>
+
+                      <div class="play">
+                        <ion-icon name="play-circle-outline"></ion-icon>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="card-body">
+                    <h3 class="card-title">Wonder Woman 1984</h3>
+
+                    <div class="card-info">
+                      <span class="genre">Action/Adventure</span>
+                      <span class="year">2020</span>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="movie-card">
+
+                  <div class="card-head">
+                    <img src="./assets/images/movies/captain-marvel.jpg" alt="" class="card-img">
+
+                    <div class="card-overlay">
+
+                      <div class="bookmark">
+                        <ion-icon name="bookmark-outline"></ion-icon>
+                      </div>
+
+                      <div class="rating">
+                        <ion-icon name="star-outline"></ion-icon>
+                        <span>6.8</span>
+                      </div>
+
+                      <div class="play">
+                        <ion-icon name="play-circle-outline"></ion-icon>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="card-body">
+                    <h3 class="card-title">Captain Marvel</h3>
+
+                    <div class="card-info">
+                      <span class="genre">Action/Sci-fi</span>
+                      <span class="year">2019</span>
+                    </div>
+                  </div>
+
+                </div>
+        </div>
+        <!--
+          - load more button
+        -->
+        <button class="load-more">LOAD MORE</button>
+
+      </section>
+
+
+
+
+
+      <!--
+        - #CATEGORY SECTION
+      -->
+      <section class="category" id="category">
+
+        <h2 class="section-heading">Category</h2>
+
+        <div class="category-grid">
+
+          <div class="category-card">
+            <img src="./assets/images/action.jpg" alt="" class="card-img">
+            <div class="name">Action</div>
+            <div class="total">100</div>
+          </div>
+
+          <div class="category-card">
+            <img src="./assets/images/comedy.jpg" alt="" class="card-img">
+            <div class="name">Comedy</div>
+            <div class="total">50</div>
+          </div>
+
+          <div class="category-card">
+            <img src="./assets/images/thriller.webp" alt="" class="card-img">
+            <div class="name">Thriller</div>
+            <div class="total">20</div>
+          </div>
+
+          <div class="category-card">
+            <img src="./assets/images/horror.jpg" alt="" class="card-img">
+            <div class="name">Horror</div>
+            <div class="total">80</div>
+          </div>
+
+          <div class="category-card">
+            <img src="./assets/images/adventure.jpg" alt="" class="card-img">
+            <div class="name">Adventure</div>
+            <div class="total">100</div>
+          </div>
+
+          <div class="category-card">
+            <img src="./assets/images/animated.jpg" alt="" class="card-img">
+            <div class="name">Animated</div>
+            <div class="total">50</div>
+          </div>
+
+          <div class="category-card">
+            <img src="./assets/images/crime.jpg" alt="" class="card-img">
+            <div class="name">Crime</div>
+            <div class="total">20</div>
+          </div>
+
+          <div class="category-card">
+            <img src="./assets/images/sci-fi.jpg" alt="" class="card-img">
+            <div class="name">SCI-FI</div>
+            <div class="total">80</div>
+          </div>
+
+        </div>
+
+      </section>
+
+
+
+
+
+    <!--
+      - FOOTER SECTION
+    -->
+    <footer>
+
+      <div class="footer-content">
+
+        <div class="footer-brand">
+          <img src="./assets/images/logo.png" alt="" class="footer-logo">
+          <p class="slogan">Movies & TV Shows, Online cinema,
+            Movie database HTML Template.</p>
+
+
+          <div class="social-link">
+
+            <a href="#">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+            <a href="#">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+            <a href="#">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+            <a href="#">
+              <ion-icon name="logo-tiktok"></ion-icon>
+            </a>
+            <a href="#">
+              <ion-icon name="logo-youtube"></ion-icon>
+            </a>
+
+          </div>
+        </div>
+
+
+        <div class="footer-links">
+          <ul>
+
+            <h4 class="link-heading">CineFlix</h4>
+
+            <li class="link-item"><a href="#">About us</a></li>
+            <li class="link-item"><a href="#">My profile</a></li>
+            <li class="link-item"><a href="#">Pricing plans</a></li>
+            <li class="link-item"><a href="#">Contacts</a></li>
+
+          </ul>
+
+          <ul>
+
+            <h4 class="link-heading">Browse</h4>
+
+            <li class="link-item"><a href="#">Live Tv</a></li>
+            <li class="link-item"><a href="#">Live News</a></li>
+            <li class="link-item"><a href="#">Live Sports</a></li>
+            <li class="link-item"><a href="#">Streaming Library</a></li>
+
+          </ul>
+
+          <ul>
+
+            <li class="link-item"><a href="#">TV Shows</a></li>
+            <li class="link-item"><a href="#">Movies</a></li>
+            <li class="link-item"><a href="#">Kids</a></li>
+            <li class="link-item"><a href="#">Collections</a></li>
+
+          </ul>
+
+          <ul>
+
+            <h4 class="link-heading">Help</h4>
+
+            <li class="link-item"><a href="#">Account & Billing</a></li>
+            <li class="link-item"><a href="#">Plans & Pricing</a></li>
+            <li class="link-item"><a href="#">Supported devices</a></li>
+            <li class="link-item"><a href="#">Accessibility</a></li>
+
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-copyright">
+
+        <div class="copyright">
+          <p>&copy; copyright 2021 CineFlix</p>
+        </div>
+
+        <div class="wrapper">
+          <a href="#">Privacy policy</a>
+          <a href="#">Terms and conditions</a>
+        </div>
+
+      </div>
+
+    </footer>
+
+  </div>
+
+
+
+
+
+  <!--
+    - custom js link
+  -->
+  <script src="./assets/js/main.js"></script>
+
+  <!--
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

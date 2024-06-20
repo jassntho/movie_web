@@ -1,0 +1,93 @@
+﻿@model Movie_Web.Models.Account
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Chi Tiết tài khoản</h4>
+
+                    <form class="forms-sample" asp-area="Admin" asp-controller="Accounts" asp-action="Details">
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="FullName">Full Name</label>
+                                    <br />
+                                    @Html.DisplayFor(model => model.FullName)
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="Email" class="form-control-lable">Email: <span class="tx-danger">*</span></label>
+                                    <br />
+                                    @Html.DisplayFor(model => model.Email)
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+
+                                    <label asp-for="Phone" class="form-control-lable">Phone: <span class="tx-danger">*</span></label>
+                                    <br />
+                                    @Html.DisplayFor(model => model.Phone)
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="Salt" class="form-control-lable">Salt</label>
+                                    <br />
+                                    @Html.DisplayFor(model => model.Salt)
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="Password" class="form-control-lable">Password</label>
+                                    <br />
+                                    @Html.DisplayFor(model => model.Password)
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="CreateDate">CreatedDate</label>
+                                    <br />
+                                    @Html.DisplayFor(model => model.CreateDate)
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="LastLogin" class="form-control-lable">Lastlogin: <span class="tx-danger">*</span></label>
+                                    <br />
+                                    @Html.DisplayFor(model => model.LastLogin)
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+
+                                    <label asp-for="Role" class="form-control-lable">Role: <span class="tx-danger">*</span></label>
+                                    <br />
+                                    @Html.DisplayFor(model => model.Role!.RoleName)
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+
+                            <button asp-action="Index" class="btn btn-primary me-2">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

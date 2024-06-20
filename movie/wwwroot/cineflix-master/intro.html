@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="./assets/images/icon.png" type="image/png">
+  <title>HTKM_Intro</title>
+
+  <!--
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/intro.css">
+  <link rel="stylesheet" href="./assets/css/media_query_intro.css">
+  <link rel='stylesheet prefetch' href='https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css'>
+
+  <!--
+    - google font link
+  -->
+  <link href="https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900" rel="stylesheet" />
+  <link href='https://fonts.googleapis.com/css?family=Alata' rel='stylesheet'>
+</head>
+
+<body>
+
+
+
+
+  <!--
+    - main container
+  -->
+  <div class="container">
+
+    <!--
+      - #HEADER SECTION
+    -->
+    <!--
+      navbar
+    -->
+    <header>
+      <div class="navbar">
+        <!-- menu button for small screen -->
+        <button class="navbar-menu-btn">
+          <span class="one"></span>
+          <span class="two"></span>
+          <span class="three"></span>
+        </button>
+  
+        <a href="#" class="navbar-brand">
+          <img src="./assets/images/logo.png" alt="">
+        </a>
+  
+        <!-- navbar navigation -->
+        <nav>
+          <ul class="navbar-nav">
+            <li> <a href="#" class="navbar-link">Trang chủ</a> </li>
+            <li> <a href="#" class="navbar-link">Phim lẻ</a> </li>
+            <li> <a href="#" class="navbar-link">Phim bộ</a> </li>
+            <li class="dropdown">
+              <a href="#" class="navbar-link">Thể loại</a>
+              <ul class="dropdown-content">
+                <li><a href="#">Hành Động</a></li>
+                <li><a href="#">Cổ Trang</a></li>
+                <li><a href="#">Tâm Lý</a></li>
+                <li><a href="#">Tình Cảm</a></li>
+                <li><a href="#">Kinh Dị</a></li>
+                <li><a href="#">Võ Thuât</a></li>
+                <li><a href="#">Chiến Tranh</a></li>
+                <li><a href="#">Kịch Tính</a></li>
+                <li><a href="#">Phiêu Lưu</a></li>
+                <li><a href="#">Gia Đình</a></li>
+                <li><a href="#">Viễn Tưởng</a></li>
+                <li><a href="#">Âm Nhạc</a></li>
+                <li><a href="#">Thần thoại</a></li>
+                <li><a href="#">Khoa Học</a></li>
+                <li><a href="#">Hài</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="navbar-link">Quốc gia</a>
+              <ul class="dropdown-content">
+                <li><a href="#">Việt Nam</a></li>
+                <li><a href="#">Âu Mỹ</a></li>
+                <li><a href="#">Hồng Kông</a></li>
+                <li><a href="#">Hàn Quốc</a></li>
+                <li><a href="#">Nhật Bản</a></li>
+                <li><a href="#">Philipines</a></li>
+                <li><a href="#">Trung Quốc</a></li>
+                <li><a href="#">Thái Lan</a></li>
+                <li><a href="#">Ấn Độ</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+  
+        <!-- search and sign-in -->
+        <div class="navbar-actions">
+          <form action="#" class="navbar-form">
+            <input type="text" name="search" placeholder="I'm looking for..." class="navbar-form-search">
+            <button class="navbar-form-btn">
+              <ion-icon name="search-outline"></ion-icon>
+            </button>
+            <button class="navbar-form-close">
+              <ion-icon name="close-circle-outline"></ion-icon>
+            </button>
+          </form>
+  
+          <!-- search button for small screen -->
+          <button class="navbar-search-btn">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+  
+          <a href="#" class="navbar-signin">
+            <span>Sign in</span>
+            <ion-icon name="log-in-outline"></ion-icon>
+          </a>
+        </div>
+      </div>
+    </header>
+<!--
+  main
+-->
+    <main>
+        <div class="main-container">
+
+            <div class="film-container">
+              <div class="image-container">
+                <img  src="./assets/images/movies/dune.jpg" class="image-container"></img>
+                <a class="watch_button_more" href="">Xem phim</a>
+               </div>
+                
+                <div class="description-container">
+                  "
+                  Phần 2 Học Viện Ma Vương, Maou Gakuin no Futekigousha: Shijou Saikyou no Maou no Shiso, Tensei shite Shison-tachi no Gakkou e Kayou. nè!"
+                </div>
+                <div class="image-background">
+                  <img src="./assets/images/John-Wick-3.jpg"  class="img-background"></img>
+                </div>
+                <div class="title-film">
+                  <strong>Captain Wick 3:Cuộc chiến tào lao</strong>
+                </div>
+                <div class="rating-film">
+                  <strong>Rating:</strong>
+                  <div class="stars">
+                    <form action="">
+                      <input class="star star-10" id="star-10" type="radio" name="star"/>
+                      <label class="star star-10" for="star-10"></label>
+                      <input class="star star-9" id="star-9" type="radio" name="star"/>
+                      <label class="star star-9" for="star-9"></label>
+                      <input class="star star-8" id="star-8" type="radio" name="star"/>
+                      <label class="star star-8" for="star-8"></label>
+                      <input class="star star-7" id="star-7" type="radio" name="star"/>
+                      <label class="star star-7" for="star-7"></label>
+                      <input class="star star-6" id="star-6" type="radio" name="star"/>
+                      <label class="star star-6" for="star-6"></label>
+                      <input class="star star-5" id="star-5" type="radio" name="star"/>
+                      <label class="star star-5" for="star-5"></label>
+                      <input class="star star-4" id="star-4" type="radio" name="star"/>
+                      <label class="star star-4" for="star-4"></label>
+                      <input class="star star-3" id="star-3" type="radio" name="star"/>
+                      <label class="star star-3" for="star-3"></label>
+                      <input class="star star-2" id="star-2" type="radio" name="star"/>
+                      <label class="star star-2" for="star-2"></label>
+                      <input class="star star-1" id="star-1" type="radio" name="star"/>
+                      <label class="star star-1" for="star-1"></label>
+                    </form>
+                  </div>
+                </div>
+            </div>
+            
+            <div class="info-container">
+              <div class="title-info">
+                <h2> Thông tin phim:</h2>
+              </div>
+                <div class="left-info">
+                  <li class="info eps">
+                  <strong>Tập mới:</strong>
+                  <a href=""title="">1</a>
+                  <a href=""title="">2</a>
+                  <a href=""title="">3</a>
+                  <a href=""tilte="">4</a>
+                  </li>
+                  <li class="info eps"><strong>Trạng thái:</strong> Đã hoàn thành</li>
+                  <li class="info eps"><strong>Thể loại:</strong> Hành động,Viễn tưởng</li>
+                  <li class="info eps"><strong>Quốc gia:</strong> Việt Nam</li>
+                  <li class="info eps"><strong>Đạo diễn:</strong> Nguyễn Tuấn Khoa</li>
+                  <li class="info eps"><strong>Số lượt xem:</strong> 1.000.000</li>
+                 
+                </div>
+                <div class="right-info">
+                
+                  <li class="info eps"><strong>Trạng thái:</strong> Đã hoàn thành</li>
+                  <li class="info eps"><strong>Thể loại:</strong> Hành động,Viễn tưởng</li>
+                  <li class="info eps"><strong>Quốc gia:</strong> Việt Nam</li>
+                  <li class="info eps"><strong>Đạo diễn:</strong> Nguyễn Tuấn Khoa</li>
+                  <li class="info eps"><strong>Số lượt xem:</strong> 1.000.000</li>
+                </div>
+            </div>
+            <!--
+              HOT-BAR
+            -->
+            <script>
+              document.addEventListener("DOMContentLoaded", function() {
+                const titles = document.querySelectorAll(".movie-list-A .title");
+                titles.forEach(title => {
+                  if (title.textContent.length > 20) { // Adjust length as needed
+                    title.textContent = title.textContent.substring(0, 17) + '...'; // Adjust truncation as needed
+                  }
+                });
+              });
+            </script>
+            
+            <div class="Hot-bar">
+              <div class="container1-title">
+                <h4 style="color: #bada55;">HOT</h4>
+              </div>
+              <div class="movie-list-A">
+                <a rel="bookmark" href="#">
+                  <div class="image"> 
+                    <img src="./assets/images/movies/godzilla-x-kong-de-che-moi-thumb.jpg" alt="#">
+                    <div class="rank">#1</div>
+                    <div class="play-overlay"><i class="fas fa-play"></i></div>
+                  </div>
+                  <div class="text-info">
+                    <div class="title">GodzillaXKong: Đế chế mới</div>
+                    <p class="movie-list-info">
+                      <span class="movie-list-info-vote">★ 7.4</span>
+                      <span class="movie-list-info-eps">
+                        <i class="fas fa-clock"></i>
+                        1/1
+                      </span>
+                      <span class="movie-list-info-year">
+                        <i class="fas fa-calendar-alt"></i>
+                        2024
+                      </span>
+                    </p>
+                  </div>
+                </a>
+              </div>
+              
+              <div class="movie-list-A">
+                <a rel="bookmark" href="#">
+                  <div class="image"> 
+                    <img src="./assets/images/movies/cong-phu-gau-truc-4.jpg" alt="#">
+                    <div class="rank">#2</div>
+                    <div class="play-overlay"><i class="fas fa-play"></i></div>
+                  </div>
+                  <div class="text-info">
+                    <div class="title">Kung Fu Panda 4</div>
+                    <p class="movie-list-info">
+                      <span class="movie-list-info-vote">★ 7.4</span>
+                      <span class="movie-list-info-eps">
+                        <i class="fas fa-clock"></i>
+                        1/1
+                      </span>
+                      <span class="movie-list-info-year">
+                        <i class="fas fa-calendar-alt"></i>
+                        2024
+                      </span>
+                    </p>
+                  </div>
+                </a>
+              </div>
+    
+              <div class="movie-list-A">
+                <a rel="bookmark" href="#">
+                  <div class="image"> 
+                    <img src="./assets/images/movies/meo-di-hia-dieu-uoc-cuoi-cung-thumb.jpg" alt="#">
+                    <div class="rank">#3</div>
+                    <div class="play-overlay"><i class="fas fa-play"></i></div>
+                  </div>
+                  <div class="text-info">
+                    <div class="title">Mèo đi hia: Điều ước cuối cùng</div>
+                    <p class="movie-list-info">
+                      <span class="movie-list-info-vote">★ 7.4</span>
+                      <span class="movie-list-info-eps">
+                        <i class="fas fa-clock"></i>
+                        1/1
+                      </span>
+                      <span class="movie-list-info-year">
+                        <i class="fas fa-calendar-alt"></i>
+                        2022
+                      </span>
+                    </p>
+                  </div>
+                </a>
+              </div>
+    
+              <div class="movie-list-A">
+                <a rel="bookmark" href="#">
+                  <div class="image"> 
+                    <img src="./assets/images/movies/tro-choi-kim-tu-thap.jpg" alt="#">
+                    <div class="rank">#4</div>
+                    <div class="play-overlay"><i class="fas fa-play"></i></div>
+                  </div>
+                  <div class="text-info">
+                    <div class="title">Pyramid Game</div>
+                    <p class="movie-list-info">
+                      <span class="movie-list-info-vote">★ 7.4</span>
+                      <span class="movie-list-info-eps">
+                        <i class="fas fa-clock"></i>
+                        2/10
+                      </span>
+                      <span class="movie-list-info-year">
+                        <i class="fas fa-calendar-alt"></i>
+                        2024
+                      </span>
+                    </p>
+                  </div>
+                </a>
+              </div>
+    
+              <div class="movie-list-A">
+                <a rel="bookmark" href="#">
+                  <div class="image"> 
+                    <img src="./assets/images/movies/Bong_Dung_Trung_So.jpg" alt="#">
+                    <div class="rank">#5</div>
+                    <div class="play-overlay"><i class="fas fa-play"></i></div>
+                  </div>
+                  <div class="text-info">
+                    <div class="title">Bỗng Dưng Trúng Số</div>
+                    <p class="movie-list-info">
+                      <span class="movie-list-info-vote">★ 7.4</span>
+                      <span class="movie-list-info-eps">
+                        <i class="fas fa-clock"></i>
+                        1/1
+                      </span>
+                      <span class="movie-list-info-year">
+                        <i class="fas fa-calendar-alt"></i>
+                        2022
+                      </span>
+                    </p>
+                  </div>
+                </a>
+              </div>
+    
+              <div class="movie-list-A">
+                <a rel="bookmark" href="#">
+                  <div class="image"> 
+                    <img src="./assets/images/movies/biet-doi-san-ma-ky-nguyen-bang-gia-thumb.jpg" alt="#">
+                    <div class="rank">#6</div>
+                    <div class="play-overlay"><i class="fas fa-play"></i></div>
+                  </div>
+                  <div class="text-info">
+                    <div class="title">Biệt đội săn ma: Kỷ nguyên băng giá</div>
+                    <p class="movie-list-info">
+                      <span class="movie-list-info-vote">★ 7.4</span>
+                      <span class="movie-list-info-eps">
+                        <i class="fas fa-clock"></i>
+                        1/1
+                      </span>
+                      <span class="movie-list-info-year">
+                        <i class="fas fa-calendar-alt"></i>
+                        2024
+                      </span>
+                    </p>
+                  </div>
+                </a>
+              </div>
+    
+              <div class="movie-list-A">
+                <a rel="bookmark" href="#">
+                  <div class="image"> 
+                    <img src="./assets/images/movies/animevsub-uuB264BvCF.jpg" alt="#">
+                    <div class="rank">#7</div>
+                    <div class="play-overlay"><i class="fas fa-play"></i></div>
+                  </div>
+                  <div class="text-info">
+                    <div class="title">Crayon Shin-chan Movie 31</div>
+                    <p class="movie-list-info">
+                      <span class="movie-list-info-vote">★ 7.4</span>
+                      <span class="movie-list-info-eps">
+                        <i class="fas fa-clock"></i>
+                        1/1
+                      </span>
+                      <span class="movie-list-info-year">
+                        <i class="fas fa-calendar-alt"></i>
+                        2023
+                      </span>
+                    </p>
+                  </div>
+                </a>
+              </div>
+    
+              <div class="movie-list-A">
+                <a rel="bookmark" href="#">
+                  <div class="image"> 
+                    <img src="./assets/images/movies/yeu_em_ty_cai_nhin_dau_tien.jpg" alt="#">
+                    <div class="rank">#8</div>
+                    <div class="play-overlay"><i class="fas fa-play"></i></div>
+                  </div>
+                  <div class="text-info">
+                    <div class="title">Yêu em từ cái nhìn đầu tiên</div>
+                    <p class="movie-list-info">
+                      <span class="movie-list-info-vote">★ 7.4</span>
+                      <span class="movie-list-info-eps">
+                        <i class="fas fa-clock"></i>
+                        3/20
+                      </span>
+                      <span class="movie-list-info-year">
+                        <i class="fas fa-calendar-alt"></i>
+                        2016
+                      </span>
+                    </p>
+                  </div>
+                </a>
+              </div>
+    
+              <div class="movie-list-A">
+                <a rel="bookmark" href="#">
+                  <div class="image"> 
+                    <img src="./assets/images/movies/hy-vong.jpg" alt="#">
+                    <div class="rank">#9</div>
+                    <div class="play-overlay"><i class="fas fa-play"></i></div>
+                  </div>
+                  <div class="text-info">
+                    <div class="title">Hope</div>
+                    <p class="movie-list-info">
+                      <span class="movie-list-info-vote">★ 7.4</span>
+                      <span class="movie-list-info-eps">
+                        <i class="fas fa-clock"></i>
+                        1/1
+                      </span>
+                      <span class="movie-list-info-year">
+                        <i class="fas fa-calendar-alt"></i>
+                        2013
+                      </span>
+                    </p>
+                  </div>
+                </a>
+              </div>
+            </div>
+        <!--
+          END-HOTBAR
+        -->
+        <!--
+          COMMENT
+        -->
+        <div class="comment-section">
+            <!-- Khung bình luận giống Facebook sẽ được đặt ở đây -->
+        </div>
+        </main>
+    <!--
+      - FOOTER SECTION
+    -->
+    <footer>
+
+      <div class="footer-content">
+
+        <div class="footer-brand">
+          <img src="./assets/images/logo.png" alt="" class="footer-logo">
+          <p class="slogan">Movies & TV Shows, Online cinema,
+            Movie database HTML Template.</p>
+
+
+          <div class="social-link">
+
+            <a href="#">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+            <a href="#">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+            <a href="#">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+            <a href="#">
+              <ion-icon name="logo-tiktok"></ion-icon>
+            </a>
+            <a href="#">
+              <ion-icon name="logo-youtube"></ion-icon>
+            </a>
+
+          </div>
+        </div>
+
+
+        <div class="footer-links">
+          <ul>
+
+            <h4 class="link-heading">CineFlix</h4>
+
+            <li class="link-item"><a href="#">About us</a></li>
+            <li class="link-item"><a href="#">My profile</a></li>
+            <li class="link-item"><a href="#">Pricing plans</a></li>
+            <li class="link-item"><a href="#">Contacts</a></li>
+
+          </ul>
+
+          <ul>
+
+            <h4 class="link-heading">Browse</h4>
+
+            <li class="link-item"><a href="#">Live Tv</a></li>
+            <li class="link-item"><a href="#">Live News</a></li>
+            <li class="link-item"><a href="#">Live Sports</a></li>
+            <li class="link-item"><a href="#">Streaming Library</a></li>
+
+          </ul>
+
+          <ul>
+
+            <li class="link-item"><a href="#">TV Shows</a></li>
+            <li class="link-item"><a href="#">Movies</a></li>
+            <li class="link-item"><a href="#">Kids</a></li>
+            <li class="link-item"><a href="#">Collections</a></li>
+
+          </ul>
+
+          <ul>
+
+            <h4 class="link-heading">Help</h4>
+
+            <li class="link-item"><a href="#">Account & Billing</a></li>
+            <li class="link-item"><a href="#">Plans & Pricing</a></li>
+            <li class="link-item"><a href="#">Supported devices</a></li>
+            <li class="link-item"><a href="#">Accessibility</a></li>
+
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-copyright">
+
+        <div class="copyright">
+          <p>&copy; copyright 2021 CineFlix</p>
+        </div>
+
+        <div class="wrapper">
+          <a href="#">Privacy policy</a>
+          <a href="#">Terms and conditions</a>
+        </div>
+
+      </div>
+
+    </footer>
+
+  </div>
+
+
+
+
+
+  <!--
+    - custom js link
+  -->
+  <script src="./assets/js/main.js"></script>
+
+  <!--
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

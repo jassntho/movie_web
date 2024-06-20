@@ -1,0 +1,51 @@
+﻿@model Movie_Web.Models.Movie
+@{
+    ViewData["Title"] = "AddCat";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<form class="forms-sample" asp-area="Admin" asp-controller="AdminMovies" asp-action="AddCat" asp-route-id="@Model.MovieId" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="MovieId" />
+    <input type="hidden" asp-for="MovieName" />
+    <input type="hidden" asp-for="Image" />
+    <input type="hidden" asp-for="Description" />
+    <input type="hidden" asp-for="Time" />
+    <input type="hidden" asp-for="PublishedYear" />
+    <input type="hidden" asp-for="MovieLink" />
+    <input type="hidden" asp-for="TypeId" />
+    <input type="hidden" asp-for="Episode" />
+    <input type="hidden" asp-for="Viewed" />
+    <input type="hidden" asp-for="Status" />
+    <input type="hidden" asp-for="CountryId" />
+    <input type="hidden" asp-for="Director" />
+    <input type="hidden" asp-for="MovieLinkContingency" />
+    <input type="hidden" asp-for="MovieLinkTrailer" />
+    <input type="hidden" asp-for="ImageSlider" />
+    <input type="hidden" asp-for="Alias" />
+    <input type="hidden" asp-for="EpisodeLimit" />
+    <input type="hidden" asp-for="DirectorAlias" />
+    <input type="hidden" asp-for="Actors" />
+    <input type="hidden" asp-for="Categories" />
+    <input type="hidden" asp-for="Rates" />
+
+
+    <div class="form-group">
+        @for (int i = 1; i <= ViewBag.Max_Cat_Movie; i++)
+        {
+            <label for="Cat_@i" class="control-label">Cat @i</label>
+            <select id="Cat_@i" name="Cat_@i" class="form-control">
+                <option value="0">-- Chọn một danh mục --</option>
+                @foreach (var cat in ViewBag.DanhMuc)
+                {
+                    <option value="@cat.Value">@cat.Text</option>
+                }
+            </select>
+        }
+
+    </div>
+
+    <button type="submit" class="btn btn-primary me-2">Submit</button>
+    <button asp-action="Index" class="btn btn-light">Cancel</button>
+</form>

@@ -1,0 +1,503 @@
+﻿@model Movie_Web.Models.Movie
+@{
+
+    ViewData["Title"] = "Watch Flix";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="~/cineflix-master/assets/images/icon3.png" type="image/png">
+    <title>HTKM Flix</title>
+
+    <!--
+      - custom css link
+    -->
+    <link rel="stylesheet" href="~/cineflix-master/assets/css/play.css">
+    <link rel="stylesheet" href="~/cineflix-master/assets/css/media_query_play.css">
+    <link rel='stylesheet prefetch' href='https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css'>
+
+    <!--
+      - google font link
+    -->
+    <link href='https://fonts.googleapis.com/css?family=Alata' rel='stylesheet'>
+</head>
+
+<body>
+
+
+
+
+    <!--
+      - main container
+    -->
+    <div class="container">
+
+        <!--
+          - #HEADER SECTION
+        -->
+
+        <header>
+            <div class="navbar">
+                <!-- menu button for small screen -->
+                <button class="navbar-menu-btn">
+                    <span class="one"></span>
+                    <span class="two"></span>
+                    <span class="three"></span>
+                </button>
+
+                <a asp-controller="Home" asp-action="Index" class="navbar-brand">
+                    <img src="~/cineflix-master/assets/images/logo_newest.png" />
+                </a>
+
+                <!-- navbar navigation -->
+                <nav>
+                    <ul class="navbar-nav">
+                        <li> <a asp-controller="Home" asp-action="Index" class="navbar-link">Trang chủ</a> </li>
+                        @{
+                            string urlPhimLe = $"/phim-le/page=1";
+                            string urlPHimBo = $"/phim-bo/page=1";
+                        }
+                        <li> <a href="@urlPhimLe" class="navbar-link">Phim lẻ</a> </li>
+                        <li> <a href="@urlPHimBo" class="navbar-link">Phim bộ</a> </li>
+                        <li class="dropdown">
+                            <a href="#" class="navbar-link">Thể loại</a>
+                            <ul class="dropdown-content">
+
+                                @{
+                                    foreach (var item in ViewBag.Cat)
+                                    {
+                                        string urlTheLoai = $"/the-loai/{item.CategoriesAlias}/page=1";
+                                        <li><a href="@urlTheLoai">@item.CategoryName.ToString()</a></li>
+                                    }
+                                }
+
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="navbar-link">Quốc gia</a>
+                            <ul class="dropdown-content">
+
+
+                                @{
+                                    foreach (var item in ViewBag.Country)
+                                    {
+                                        string urlQuocGia = $"/quoc-gia/{item.CountryAlias}/page=1";
+                                        <li><a href="@urlQuocGia">@item.CountryName.ToString()</a></li>
+                                    }
+                                }
+
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+
+                <!-- search and sign-in -->
+                <div class="navbar-actions">
+                    <form action="/tim-kiem/" class="navbar-form">
+                        <input type="text" name="search" placeholder="Tìm kiếm tại đây..." class="navbar-form-search">
+                        <button class="navbar-form-btn">
+                            <ion-icon name="search-outline"></ion-icon>
+                        </button>
+                        <button class="navbar-form-close">
+                            <ion-icon name="close-circle-outline"></ion-icon>
+                        </button>
+                    </form>
+
+                    <!-- search button for small screen -->
+                    <button class="navbar-search-btn">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </button>
+
+                    @{
+                        if (ViewBag.FullName != null)
+                        {
+                            string urlDangXuat = $"/dang-xuat.html";
+
+
+                            <div class="navbar-signin">
+                                <span>@ViewBag.FullName</span>
+                                <a href="@urlDangXuat">
+                                    <ion-icon name="log-in-outline"></ion-icon>
+                                </a>
+                            </div>
+
+
+
+                        }
+                        else
+                        {
+                            string urlDangNhap = $"/dang-nhap.html";
+
+                            <a href="@urlDangNhap" class="navbar-signin">
+                                <span>Đăng nhập</span>
+                                <ion-icon name="log-in-outline"></ion-icon>
+                            </a>
+                        }
+                    }
+                </div>
+            </div>
+        </header>
+
+
+        <main>
+            <div class="main-container">
+                <div class="breadcrumb-container">
+                    <ul class="breadcrumb">
+                        <li><a asp-controller="Home" asp-action="Index" >Trang chủ</a></li>
+                        @{
+                            if(Model.Type.TypeAlias == "phim-bo")
+                            {
+                                <li><a href="@urlPHimBo">@Model.Type.TypeName.ToString()</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="@urlPhimLe">@Model.Type.TypeName.ToString()</a></li>
+                            }
+                        }
+                       
+                        @{
+                            string urlPhimTap1 = $"/demophim/{ViewBag.aliasPhimTap1}";
+                        }
+                        <li><a href="@urlPhimTap1">@Model.MovieName.ToString()</a></li>
+                        <li>Tập @ViewBag.TapHienTai.ToString()</li>
+                    </ul>
+                </div>
+                <div class="player-container">
+                    <div class="preload-container">
+                        <iframe width="100%" height="430px" src="@Model.MovieLink" frameborder="0" scrolling="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="tool-container">
+                        @{
+                            if (ViewBag.TapHienTai <= 1)
+                            {
+                                <button class="tool-button" id="prev-episode">
+                                    <ion-icon name="play-back-outline"></ion-icon> Tập trước
+                                </button>
+                            }
+                            else
+                            {
+                                int i = ViewBag.TapHienTai - 1;
+                                string urlTap = ViewBag.aliasTenPhim + i.ToString();
+                                string urlTap1 = $"/xemphim/{urlTap}";
+                                <a href="@urlTap1">
+                                    <button class="tool-button" id="prev-episode">
+                                        <ion-icon name="play-back-outline"></ion-icon> Tập trước
+                                    </button>
+                                </a>
+                            }
+
+                            if (ViewBag.TapHienTai >= ViewBag.CountPhim)
+                            {
+                                <button class="tool-button" id="next-episode">
+                                    <ion-icon name="play-forward-outline"></ion-icon> Tập sau
+                                </button>
+                            }
+
+                            else
+                            {
+                                int i = ViewBag.TapHienTai + 1;
+                                string urlTap = ViewBag.aliasTenPhim + i.ToString();
+                                string urlTap1 = $"/xemphim/{urlTap}";
+                                <a href="@urlTap1">
+                                    <button class="tool-button" id="next-episode">
+                                        <ion-icon name="play-forward-outline"></ion-icon> Tập sau
+                                    </button>
+                                </a>
+                            }
+
+                        }
+                       
+                       
+                        <button class="tool-button" id="report-error">
+                            <ion-icon name="alert-circle-outline"></ion-icon> Báo lỗi
+                        </button>
+                        <button class="tool-button" id="toggle-lights">
+                            <ion-icon name="moon-outline"></ion-icon> Tắt đèn
+                        </button>
+                       
+                    </div>
+                </div>
+
+                <div class="episode-container">
+                    <h2>Chọn tập phim</h2>
+                    <ul class="episode-list">
+                        @{
+                            for (int i = 1; i<= ViewBag.CountPhim; i++)
+                            {
+                                string urlTap = ViewBag.aliasTenPhim + i.ToString();
+                                string urlTap1 = $"/xemphim/{urlTap}";
+                                if (i == ViewBag.TapHienTai)
+                                {
+                                    <li><a href="@urlTap1" class="episode-link-tung">Tập @i</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="@urlTap1" class="episode-link">Tập @i</a></li>
+                                }
+
+                            }
+                        }
+                       
+                       
+                    </ul>
+                </div>
+
+                @{
+                    if(Model.Image != null && Model.Description != null && Model.ImageSlider != null)
+                    {
+                        <div class="film-container">
+                            <div class="image-container">
+                                <img src="~/images/MovieImage/@Model.Image" class="image-container"></img>
+                            </div>
+
+                            <div class="description-container">
+                                @Model.Description.ToString()
+                            </div>
+                            <div class="image-background">
+                                <img src="~/images/MovieImageSlider/@Model.ImageSlider" class="img-background"></img>
+                            </div>
+                            <div class="title-film">
+                                <strong>@Model.MovieName</strong>
+                            </div>
+                            <div class="rating-film">
+                                <strong>Rating:</strong>
+                                <div class="stars">
+                                    <form action="">
+                                        <input class="star star-10" id="star-10" type="radio" name="star" />
+                                        <label class="star star-10" for="star-10"></label>
+                                        <input class="star star-9" id="star-9" type="radio" name="star" />
+                                        <label class="star star-9" for="star-9"></label>
+                                        <input class="star star-8" id="star-8" type="radio" name="star" />
+                                        <label class="star star-8" for="star-8"></label>
+                                        <input class="star star-7" id="star-7" type="radio" name="star" />
+                                        <label class="star star-7" for="star-7"></label>
+                                        <input class="star star-6" id="star-6" type="radio" name="star" />
+                                        <label class="star star-6" for="star-6"></label>
+                                        <input class="star star-5" id="star-5" type="radio" name="star" />
+                                        <label class="star star-5" for="star-5"></label>
+                                        <input class="star star-4" id="star-4" type="radio" name="star" />
+                                        <label class="star star-4" for="star-4"></label>
+                                        <input class="star star-3" id="star-3" type="radio" name="star" />
+                                        <label class="star star-3" for="star-3"></label>
+                                        <input class="star star-2" id="star-2" type="radio" name="star" />
+                                        <label class="star star-2" for="star-2"></label>
+                                        <input class="star star-1" id="star-1" type="radio" name="star" />
+                                        <label class="star star-1" for="star-1"></label>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="film-container">
+                            <div class="image-container">
+                                <img src="~/cineflix-master/assets/images/anh_nen.png" class="image-container"></img>
+                            </div>
+
+                            <div class="description-container">
+                              
+                            </div>
+                            <div class="image-background">
+                                <img src="~/cineflix-master/assets/images/anh_nen.png" class="img-background"></img>
+                            </div>
+                            <div class="title-film">
+                                <strong></strong>
+                            </div>
+                            <div class="rating-film">
+                                <strong></strong>
+                                <div class="stars">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+
+                
+                <!--
+                  HOT-BAR
+                -->
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                        const titles = document.querySelectorAll(".movie-list-A .title");
+                        titles.forEach(title => {
+                            if (title.textContent.length > 20) { // Adjust length as needed
+                                title.textContent = title.textContent.substring(0, 17) + '...'; // Adjust truncation as needed
+                            }
+                        });
+                    });
+                </script>
+
+                <div class="Hot-bar">
+                    <div class="container1-title">
+                        <h4 style="color: #bada55;">HOT</h4>
+                    </div>
+
+                    @for (int i = 0; i < 9; i++)
+                    {
+                        <div class="movie-list-A">
+                            @{
+
+                                string urlMovie = $"/demophim/{@ViewBag.MovieHot[i].Alias}";
+
+                            }
+                            <a rel="bookmark" href="@urlMovie">
+                                <div class="image">
+
+                                    <img src="~/images/MovieImage/@ViewBag.MovieHot[i].Image.ToString()" alt="#">
+                                    <div class="rank"># @(i + 1)</div>
+                                    <div class="play-overlay"><i class="fas fa-play"></i></div>
+                                </div>
+                                <div class="text-info">
+                                    <div class="title">@ViewBag.MovieHot[i].MovieName</div>
+                                    <p class="movie-list-info">
+                                        <span class="movie-list-info-vote">★ 7.4</span>
+                                        <span class="movie-list-info-eps">
+                                            <i class="fas fa-clock"></i>
+                                            @ViewBag.MovieHot[i].Episode / @ViewBag.MovieHot[i].EpisodeLimit
+                                        </span>
+                                        <span class="movie-list-info-year">
+                                            <i class="fas fa-calendar-alt"></i>
+                                            @ViewBag.MovieHot[i].PublishedYear
+                                        </span>
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                </div>
+                <!--
+                  END-HOTBAR
+                -->
+
+                <div class="comment-section">
+                    <!-- Khung bình luận giống Facebook sẽ được đặt ở đây -->
+                </div>
+
+        </main>
+        <!--
+          - FOOTER SECTION
+        -->
+        <footer>
+
+            <div class="footer-content">
+
+                <div class="footer-brand">
+                    <img src="~/cineflix-master/assets/images/logo_newest.png" alt="" class="footer-logo">
+                    <p class="slogan">
+                        Movies & TV Shows, Online cinema,
+                        Movie database HTKM Template.
+                    </p>
+
+
+                    <div class="social-link">
+
+                        <a href="#">
+                            <ion-icon name="logo-facebook"></ion-icon>
+                        </a>
+                        <a href="#">
+                            <ion-icon name="logo-twitter"></ion-icon>
+                        </a>
+                        <a href="#">
+                            <ion-icon name="logo-instagram"></ion-icon>
+                        </a>
+                        <a href="#">
+                            <ion-icon name="logo-tiktok"></ion-icon>
+                        </a>
+                        <a href="#">
+                            <ion-icon name="logo-youtube"></ion-icon>
+                        </a>
+
+                    </div>
+                </div>
+
+
+                <div class="footer-links">
+                    <ul>
+
+                        <h4 class="link-heading">KTKM Flix</h4>
+
+                        <li class="link-item"><a href="#">About us</a></li>
+                        <li class="link-item"><a href="#">My profile</a></li>
+                        <li class="link-item"><a href="#">Pricing plans</a></li>
+                        <li class="link-item"><a href="#">Contacts</a></li>
+
+                    </ul>
+
+                    <ul>
+
+                        <h4 class="link-heading">Browse</h4>
+
+                        <li class="link-item"><a href="#">Live Tv</a></li>
+                        <li class="link-item"><a href="#">Live News</a></li>
+                        <li class="link-item"><a href="#">Live Sports</a></li>
+                        <li class="link-item"><a href="#">Streaming Library</a></li>
+
+                    </ul>
+
+                    <ul>
+
+                        <li class="link-item"><a href="#">TV Shows</a></li>
+                        <li class="link-item"><a href="#">Movies</a></li>
+                        <li class="link-item"><a href="#">Kids</a></li>
+                        <li class="link-item"><a href="#">Collections</a></li>
+
+                    </ul>
+
+                    <ul>
+
+                        <h4 class="link-heading">Help</h4>
+
+                        <li class="link-item"><a href="#">Account & Billing</a></li>
+                        <li class="link-item"><a href="#">Plans & Pricing</a></li>
+                        <li class="link-item"><a href="#">Supported devices</a></li>
+                        <li class="link-item"><a href="#">Accessibility</a></li>
+
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="footer-copyright">
+
+                <div class="copyright">
+                    <p>&copy; copyright 2021 CineFlix</p>
+                </div>
+
+                <div class="wrapper">
+                    <a href="#">Privacy policy</a>
+                    <a href="#">Terms and conditions</a>
+                </div>
+
+            </div>
+
+        </footer>
+
+    </div>
+
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v20.0" nonce="NvksRYke"></script>
+
+
+
+
+    <!--
+      - custom js link
+    -->
+    <script src="~/cineflix-master/assets/js/main.js"></script>
+
+    <!--
+      - ionicon link
+    -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

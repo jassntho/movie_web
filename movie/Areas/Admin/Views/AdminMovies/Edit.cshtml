@@ -1,0 +1,278 @@
+﻿@model Movie_Web.Models.Movie
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@* <h1>Edit</h1>
+
+<h4>Movie</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="MovieId" />
+            <input type="hidden" asp-for="Image" />
+            <input type="hidden" asp-for="ImageSlider" />
+            <div class="form-group">
+                <label asp-for="MovieName" class="control-label"></label>
+                <input asp-for="MovieName" class="form-control" />
+                <span asp-validation-for="MovieName" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Time" class="control-label"></label>
+                <input asp-for="Time" class="form-control" />
+                <span asp-validation-for="Time" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PublishedYear" class="control-label"></label>
+                <input asp-for="PublishedYear" class="form-control" />
+                <span asp-validation-for="PublishedYear" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MovieLink" class="control-label"></label>
+                <input asp-for="MovieLink" class="form-control" />
+                <span asp-validation-for="MovieLink" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeId" class="control-label"></label>
+                <select asp-for="TypeId" class="form-control" asp-items="ViewBag.TypeId"></select>
+                <span asp-validation-for="TypeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Episode" class="control-label"></label>
+                <input asp-for="Episode" class="form-control" />
+                <span asp-validation-for="Episode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Viewed" class="control-label"></label>
+                <input asp-for="Viewed" class="form-control" />
+                <span asp-validation-for="Viewed" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Status" /> @Html.DisplayNameFor(model => model.Status)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="CountryId" class="control-label"></label>
+                <select asp-for="CountryId" class="form-control" asp-items="ViewBag.CountryId"></select>
+                <span asp-validation-for="CountryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Director" class="control-label"></label>
+                <input asp-for="Director" class="form-control" />
+                <span asp-validation-for="Director" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MovieLinkContingency" class="control-label"></label>
+                <input asp-for="MovieLinkContingency" class="form-control" />
+                <span asp-validation-for="MovieLinkContingency" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MovieLinkTrailer" class="control-label"></label>
+                <input asp-for="MovieLinkTrailer" class="form-control" />
+                <span asp-validation-for="MovieLinkTrailer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageSlider" class="control-label"></label>
+                <input asp-for="ImageSlider" class="form-control" />
+                <span asp-validation-for="ImageSlider" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Alias" class="control-label"></label>
+                <input asp-for="Alias" class="form-control" />
+                <span asp-validation-for="Alias" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EpisodeLimit" class="control-label"></label>
+                <input asp-for="EpisodeLimit" class="form-control" />
+                <span asp-validation-for="EpisodeLimit" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DirectorAlias" class="control-label"></label>
+                <input asp-for="DirectorAlias" class="form-control" />
+                <span asp-validation-for="DirectorAlias" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+ *@
+
+
+
+
+
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Chỉnh Sửa phiem</h4>
+
+                <form class="forms-sample" asp-area="Admin" asp-controller="AdminMovies" asp-action="Edit" method="post" enctype="multipart/form-data">
+                    <input type="hidden" asp-for="MovieId" />
+                    <input type="hidden" asp-for="Alias" />
+                    <input type="hidden" asp-for="Director">
+                    <input type="hidden" asp-for="Actors">
+                    <input type="hidden" asp-for="Categories">
+                    <input type="hidden" asp-for="Image">
+                    <input type="hidden" asp-for="ImageSlider">
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label asp-for="MovieName" class="form-control-lable">Movie Name</label>
+                            <input type="text" class="form-control" asp-for="MovieName" placeholder="Title">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label asp-for="Time" class="form-control-lable">Time(Minute)</label>
+                                <input type="number" class="form-control" asp-for="Time" placeholder="Time">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label asp-for="PublishedYear" class="form-control-lable">PublishedYear</label>
+                                <input type="number" class="form-control" asp-for="PublishedYear" placeholder="PublishedYear">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label asp-for="Episode" class="form-control-lable">Episode</label>
+                                <input type="number" class="form-control" asp-for="Episode" placeholder="Episode">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label asp-for="EpisodeLimit" class="form-control-lable">EpisodeLimit</label>
+                                <input type="number" class="form-control" asp-for="EpisodeLimit" placeholder="EpisodeLimit">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="TypeId" class="form-control-lable">Kiểu phim :</label>
+                                <select class="form-control select2 " asp-for="TypeId" asp-items="@ViewBag.TypeId" required>
+                                    <option label="Kiểu phim"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="CountryId" class="form-control-lable">Quốc Gia : </label>
+                                <select class="form-control select2 " asp-for="CountryId" asp-items="@ViewBag.CountryId" required>
+                                    <option label="Quốc gia"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="Director" class="form-control-lable">Director</label>
+                                <input type="text" class="form-control" asp-for="Director" placeholder="Director">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label asp-for="MovieLink" class="form-control-lable">Movie-Link</label>
+                            <input type="text" class="form-control" asp-for="MovieLink" placeholder="MovieLink">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label asp-for="MovieLinkContingency" class="form-control-lable">Movie-Link-Contigency</label>
+                            <input type="text" class="form-control" asp-for="MovieLinkContingency" placeholder="MovieLinkContingency">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label asp-for="MovieLinkTrailer" class="form-control-lable">Movie-Link-Trailer</label>
+                            <input type="text" class="form-control" asp-for="MovieLinkTrailer" placeholder="MovieLinkTrailer">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-control-lable">Image_Movie_Main:     <span class="tx-danger">*</span></label>
+                                <input name="fImage" type="file" class="form-control-file" asp-for="Image">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-control-lable">Image_Movie_Slider <span class="tx-danger">*</span></label>
+                                <input name="fImageSlider" type="file" class="form-control-file" asp-for="ImageSlider">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="Status" class="form-control-lable">Hot: <span class="tx-danger">*</span></label>
+                                <input type="checkbox" asp-for="Status"><span> Hot</span>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label asp-for="Description" class="form-control-lable">Description</label>
+                            @* <text class="mySummernote" asp-for="Description"></text> *@
+                            <textarea style="height:25rem" class="form-control" asp-for="Description" placeholder="Description">
+                            </textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary me-2">Submit</button>
+                        <button asp-action="Index" class="btn btn-light">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Styles {
+
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+}
+
+
+@section Scripts {
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".mySummernote").summernote({
+                height: 150
+            });
+            $('.dropdown-toggle').dropdown();
+        });
+    </script>
+}

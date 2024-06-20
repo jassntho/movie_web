@@ -1,0 +1,38 @@
+﻿@model Movie_Web.Models.Type
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-md-9 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Tạo mới Kiểu phim</h4>
+
+                    <form class="forms-sample" asp-area="Admin" asp-controller="AdminCategories" asp-action="Create" method="post">
+                        <div class="form-group">
+                            <label asp-for="TypeName">Type Name</label>
+                            <input type="text" class="form-control" asp-for="TypeName" placeholder="Type Name">
+                        </div>
+
+
+                        <button type="submit" class="btn btn-primary me-2">Submit</button>
+                        <button asp-action="Index" class="btn btn-light">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- content-wrapper ends -->
+<!-- partial:../../partials/_footer.html -->
+<!-- partial -->
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

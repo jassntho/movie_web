@@ -1,0 +1,520 @@
+﻿@model Movie_Web.Models.Movie
+@{
+
+    ViewData["Title"] = "Demo Flix";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int movieId = Model.MovieId;
+}
+
+
+    <script src="/lib/jquery//dist/jquery.js">  </script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js">  </script>
+    <script type="text/javascript">
+        
+    </script>
+
+
+
+
+
+
+    <!--
+      - main container
+    -->
+    <div class="container">
+
+        <!--
+          - #HEADER SECTION
+        -->
+        <!--
+          navbar
+        -->
+        <header>
+            <div class="navbar">
+                <!-- menu button for small screen -->
+                <button class="navbar-menu-btn">
+                    <span class="one"></span>
+                    <span class="two"></span>
+                    <span class="three"></span>
+                </button>
+
+                <a asp-controller="Home" asp-action="Index" class="navbar-brand">
+                <img src="~/cineflix-master/assets/images/logo_newest.png" />
+                </a>
+
+                <!-- navbar navigation -->
+                <nav>
+                    <ul class="navbar-nav">
+                        <li> <a asp-controller="Home" asp-action="Index" class="navbar-link">Trang chủ</a> </li>
+                        @{
+                            string urlPhimLe = $"/phim-le/page=1";
+                            string urlPHimBo = $"/phim-bo/page=1";
+                        }
+                        <li> <a href="@urlPhimLe" class="navbar-link">Phim lẻ</a> </li>
+                        <li> <a href="@urlPHimBo" class="navbar-link">Phim bộ</a> </li>
+                        <li class="dropdown">
+                            <a href="#" class="navbar-link">Thể loại</a>
+                            <ul class="dropdown-content">
+
+                                @{
+                                    foreach (var item in ViewBag.Cat)
+                                    {
+                                        string urlTheLoai = $"/the-loai/{item.CategoriesAlias}/page=1";
+                                        <li><a href="@urlTheLoai">@item.CategoryName.ToString()</a></li>
+                                    }
+                                }
+
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="navbar-link">Quốc gia</a>
+                            <ul class="dropdown-content">
+
+
+                                @{
+                                    foreach (var item in ViewBag.Country)
+                                    {
+                                        string urlQuocGia = $"/quoc-gia/{item.CountryAlias}/page=1";
+                                        <li><a href="@urlQuocGia">@item.CountryName.ToString()</a></li>
+                                    }
+                                }
+
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+
+                <!-- search and sign-in -->
+                <div class="navbar-actions">
+                <form action="/tim-kiem/" class="navbar-form">
+                    <input type="text" name="search" placeholder="Tìm kiếm tại đây..." class="navbar-form-search">
+                        
+                        <button class="navbar-form-btn">
+                            <ion-icon name="search-outline"></ion-icon>
+                        </button>
+                    
+                        <button class="navbar-form-close">
+                            <ion-icon name="close-circle-outline"></ion-icon>
+                        </button>
+                    </form>
+
+                    <!-- search button for small screen -->
+                    <button class="navbar-search-btn">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </button>
+
+                    @{
+                        if (ViewBag.FullName != null)
+                        {
+                            string urlDangXuat = $"/dang-xuat.html";
+
+
+                            <div class="navbar-signin">
+                                <span>@ViewBag.FullName</span>
+                                <a href="@urlDangXuat">
+                                    <ion-icon name="log-in-outline"></ion-icon>
+                                </a>
+                            </div>
+
+
+
+                        }
+                        else
+                        {
+                            string urlDangNhap = $"/dang-nhap.html";
+
+                            <a href="@urlDangNhap" class="navbar-signin">
+                                <span>Đăng nhập</span>
+                                <ion-icon name="log-in-outline"></ion-icon>
+                            </a>
+                        }
+                    }
+                </div>
+            </div>
+        </header>
+        <!--
+          main
+        -->
+        <main>
+            <div class="main-container">
+
+                <div class="film-container">
+                    <div class="image-container">
+                        <img src="~/images/MovieImage/@Model.Image" class="image-container"></img>
+                        @{
+                            string urlPhim = $"/xemphim/{Model.Alias.ToString()}";
+                        }
+                        <a class="watch_button_more" href="@urlPhim">Xem phim</a>
+                    </div>
+
+                    <div class="description-container">
+                       @Model.Description.ToString()
+                    </div>
+                    <div class="image-background">
+                        <img src="~/images/MovieImageSlider/@Model.ImageSlider" class="img-background"></img>
+                    </div>
+                    <div class="title-film">
+                        <strong>@Model.MovieName</strong>
+                    </div>
+                    <div class="rating-film">
+                        <strong>Rating:</strong>
+                        <div class="stars">
+                            <div>
+                            <div class="star-rating">
+                                <input class="star star-10" id="star-10" type="radio" name="star" value="10" onclick="submitRating(this.value)" />
+                                <label class="star star-10" for="star-10"></label>
+                                <input class="star star-9" id="star-9" type="radio" name="star" value="9" onclick="submitRating(this.value)" />
+                                <label class="star star-9" for="star-9"></label>
+                                <input class="star star-8" id="star-8" type="radio" name="star" value="8" onclick="submitRating(this.value)" />
+                                <label class="star star-8" for="star-8"></label>
+                                <input class="star star-7" id="star-7" type="radio" name="star" value="7" onclick="submitRating(this.value)" />
+                                <label class="star star-7" for="star-7"></label>
+                                <input class="star star-6" id="star-6" type="radio" name="star" value="6" onclick="submitRating(this.value)" />
+                                <label class="star star-6" for="star-6"></label>
+                                <input class="star star-5" id="star-5" type="radio" name="star" value="5" onclick="submitRating(this.value)" />
+                                <label class="star star-5" for="star-5"></label>
+                                <input class="star star-4" id="star-4" type="radio" name="star" value="4" onclick="submitRating(this.value)" />
+                                <label class="star star-4" for="star-4"></label>
+                                <input class="star star-3" id="star-3" type="radio" name="star" value="3" onclick="submitRating(this.value)" />
+                                <label class="star star-3" for="star-3"></label>
+                                <input class="star star-2" id="star-2" type="radio" name="star" value="2" onclick="submitRating(this.value)" />
+                                <label class="star star-2" for="star-2"></label>
+                                <input class="star star-1" id="star-1" type="radio" name="star" value="1" onclick="submitRating(this.value)" />
+                                <label class="star star-1" for="star-1"></label>
+                            </div>
+                            </div>
+                        </div>
+
+                    
+                        
+                    </div>
+                   @*  <div class="rating-film">
+                        <strong>Đánh giá:</strong>
+                        <div class="stars">
+                            <div>
+                                <input class="star start-11" id=" start-11" type="radio" name="star" />
+                                <label class="star  start-11" for=" start-11"></label>
+                            </div>
+                        </div>
+                    </div> *@
+                </div>
+
+                <div class="info-container">
+                    <div class="title-info">
+                        <h2> Thông tin phim:</h2>
+                    </div>
+                    <div class="left-info">
+                        <li class="info eps">
+                            <strong>Tập mới:</strong>
+                            @{
+                                if(ViewBag.CountPhim == 1){
+                                    string urlTap = ViewBag.aliasTenPhim + "1";
+                                    string urlTap1 = $"/xemphim/{urlTap}";
+                                    <a href="@urlTap1" title="">1</a>
+                                }
+                                else{
+                                    int dem = 1;
+                                    for(int i = ViewBag.CountPhim; i>0; i--)
+                                    {
+                                        if(dem <= 4)
+                                        {
+                                            string urlTap = ViewBag.aliasTenPhim + i.ToString();
+                                            string urlTap1 = $"/xemphim/{urlTap}";
+                                            <a href="@urlTap1" title="">@i</a>
+                                        }
+                                    }
+                                }
+                            }
+
+
+                        </li>
+                        <li class="info eps"><strong>Trạng thái:</strong> Đã hoàn thành</li>
+                        @{
+                            int CountTheLoai = Model.Categories.Count;
+                            if (CountTheLoai == 1)
+                            {
+                                string? TheLoai1 = Model.Categories.ElementAt(0).CategoryName.ToString();
+                                <li class="info eps"><strong>Thể loại:</strong> @TheLoai1</li>
+                            }
+                         
+                            else if(CountTheLoai == 2)
+                            {
+                                string? TheLoai1 = Model.Categories.ElementAt(0).CategoryName.ToString();
+                                string? TheLoai2 = Model.Categories.ElementAt(1).CategoryName.ToString();
+                                <li class="info eps"><strong>Thể loại:</strong> @TheLoai1, @TheLoai2</li>
+                            }
+                            else if (CountTheLoai == 3)
+                            {
+                                string? TheLoai1 = Model.Categories.ElementAt(0).CategoryName.ToString();
+                                string? TheLoai2 = Model.Categories.ElementAt(1).CategoryName.ToString();
+                                string? TheLoai3 = Model.Categories.ElementAt(2).CategoryName.ToString();
+                                <li class="info eps"><strong>Thể loại:</strong> @TheLoai1, @TheLoai2, @TheLoai3</li>
+                            }
+                            else if (CountTheLoai == 4)
+                            {
+                                string? TheLoai1 = Model.Categories.ElementAt(0).CategoryName.ToString();
+                                string? TheLoai2 = Model.Categories.ElementAt(1).CategoryName.ToString();
+                                string? TheLoai3 = Model.Categories.ElementAt(2).CategoryName.ToString();
+                                string? TheLoai4 = Model.Categories.ElementAt(2).CategoryName.ToString();
+                                <li class="info eps"><strong>Thể loại:</strong> @TheLoai1, @TheLoai2, @TheLoai3, @TheLoai4</li>
+                            }
+                        
+                               
+                            
+                          
+                          
+                        }
+                        @{
+                            string? QuocGia = Model.Country.CountryName.ToString();
+                            <li class="info eps"><strong>Quốc gia:</strong> @QuocGia </li>
+                        }
+                        
+                        @{
+                            string? DaoDien = Model.Director?.ToString();
+                            <li class="info eps"><strong>Đạo diễn:</strong> @DaoDien</li>
+                        }
+
+                        @{
+                            int? SoLuotXem = Model.Viewed;
+                            if (SoLuotXem == null)
+                            {
+                                <li class="info eps"><strong>Số lượt xem:</strong> 0</li>
+                            }
+                            else
+                            {
+                                <li class="info eps"><strong>Số lượt xem:</strong> @SoLuotXem</li>
+                            }
+                        }
+
+
+                    </div>
+                    <div class="right-info">
+                        @{
+                            int? SoPhut = Model.Time;
+                            <li class="info eps"><strong>Thời lượng:</strong> @SoPhut phút</li>
+                        }
+
+                        <li class="info eps">
+                            <strong>Rating:</strong>
+                        @{
+                            if(ViewBag.Rating == null)
+                            {
+                                <span class="imdb">0.0</span>
+                            }
+                            else
+                            {
+                                string a = ViewBag.Rating.ToString();
+                                <span class="imdb">@a</span>
+                            }
+                        }
+                            
+                        </li>
+                        <li class="info eps">
+                            <strong>Chất lượng:</strong>
+                            <span class="imdb"> HD </span>
+                        </li>
+                        <li class="info eps"><strong>Ngôn ngữ:</strong> Vietsub</li>
+                        @{
+                            int? Year = Model.PublishedYear;
+                            <li class="info eps"><strong>Năm:</strong> @Year</li>
+                        }
+                       
+                    </div>
+                 </div>
+                <!--
+                  HOT-BAR
+                -->
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                        const titles = document.querySelectorAll(".movie-list-A .title");
+                        titles.forEach(title => {
+                            if (title.textContent.length > 20) { // Adjust length as needed
+                                title.textContent = title.textContent.substring(0, 17) + '...'; // Adjust truncation as needed
+                            }
+                        });
+                    });
+                </script>
+
+                <div class="Hot-bar">
+                    <div class="container1-title">
+                        <h4 style="color: #bada55;">HOT</h4>
+                    </div>
+
+                    @for (int i = 0; i < 9; i++)
+                    {
+                        <div class="movie-list-A">
+                            @{
+                                
+                                string urlMovie = $"/demophim/{@ViewBag.MovieHot[i].Alias}";
+                                
+                            }
+                            <a rel="bookmark" href="@urlMovie">
+                                <div class="image">
+
+                                    <img src="~/images/MovieImage/@ViewBag.MovieHot[i].Image.ToString()" alt="#">
+                                    <div class="rank"># @(i + 1)</div>
+                                    <div class="play-overlay"><i class="fas fa-play"></i></div>
+                                </div>
+                                <div class="text-info">
+                                    <div class="title">@ViewBag.MovieHot[i].MovieName</div>
+                                    <p class="movie-list-info">
+                                        <span class="movie-list-info-vote">★ 7.4</span>
+                                        <span class="movie-list-info-eps">
+                                            <i class="fas fa-clock"></i>
+                                            @ViewBag.MovieHot[i].Episode / @ViewBag.MovieHot[i].EpisodeLimit
+                                        </span>
+                                        <span class="movie-list-info-year">
+                                            <i class="fas fa-calendar-alt"></i>
+                                            @ViewBag.MovieHot[i].PublishedYear
+                                        </span>
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                </div>
+                <!--
+                  END-HOTBAR
+                -->
+                <!--
+                  COMMENT
+                -->
+                <div class="comment-section">
+                    <!-- Khung bình luận giống Facebook sẽ được đặt ở đây -->
+                    @{
+                        string urlDemo = ViewBag.UrlDemoPhim.ToString();
+                        string urlDemoPhim = $"/demophim/{urlDemo}";
+                    }
+
+                    <div class="fb-comments" data-href="@urlDemoPhim" data-width="100%" data-numposts="7"></div>
+                </div>
+        </main>
+        <!--
+          - FOOTER SECTION
+        -->
+        <footer>
+
+            <div class="footer-content">
+
+                <div class="footer-brand">
+                <img src="~/cineflix-master/assets/images/logo_newest.png" alt="" class="footer-logo">
+                    <p class="slogan">
+                        Movies & TV Shows, Online cinema,
+                        Movie database HTKM Template.
+                    </p>
+
+
+                    <div class="social-link">
+
+                        <a href="#">
+                            <ion-icon name="logo-facebook"></ion-icon>
+                        </a>
+                        <a href="#">
+                            <ion-icon name="logo-twitter"></ion-icon>
+                        </a>
+                        <a href="#">
+                            <ion-icon name="logo-instagram"></ion-icon>
+                        </a>
+                        <a href="#">
+                            <ion-icon name="logo-tiktok"></ion-icon>
+                        </a>
+                        <a href="#">
+                            <ion-icon name="logo-youtube"></ion-icon>
+                        </a>
+
+                    </div>
+                </div>
+
+
+                <div class="footer-links">
+                    <ul>
+
+                        <h4 class="link-heading">HTKM Flix</h4>
+
+                        <li class="link-item"><a href="#">About us</a></li>
+                        <li class="link-item"><a href="#">My profile</a></li>
+                        <li class="link-item"><a href="#">Pricing plans</a></li>
+                        <li class="link-item"><a href="#">Contacts</a></li>
+
+                    </ul>
+
+                    <ul>
+
+                        <h4 class="link-heading">Browse</h4>
+
+                        <li class="link-item"><a href="#">Live Tv</a></li>
+                        <li class="link-item"><a href="#">Live News</a></li>
+                        <li class="link-item"><a href="#">Live Sports</a></li>
+                        <li class="link-item"><a href="#">Streaming Library</a></li>
+
+                    </ul>
+
+                    <ul>
+
+                        <li class="link-item"><a href="#">TV Shows</a></li>
+                        <li class="link-item"><a href="#">Movies</a></li>
+                        <li class="link-item"><a href="#">Kids</a></li>
+                        <li class="link-item"><a href="#">Collections</a></li>
+
+                    </ul>
+
+                    <ul>
+
+                        <h4 class="link-heading">Help</h4>
+
+                        <li class="link-item"><a href="#">Account & Billing</a></li>
+                        <li class="link-item"><a href="#">Plans & Pricing</a></li>
+                        <li class="link-item"><a href="#">Supported devices</a></li>
+                        <li class="link-item"><a href="#">Accessibility</a></li>
+
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="footer-copyright">
+
+                <div class="copyright">
+                    <p>&copy; copyright 2024 HTKMFlix</p>
+                </div>
+
+                <div class="wrapper">
+                    <a href="#">Privacy policy</a>
+                    <a href="#">Terms and conditions</a>
+                </div>
+
+            </div>
+
+        </footer>
+
+    </div>
+
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function submitRating(starValue) {
+            $.ajax({
+                url: '/Movie/SubmitRating',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ rating: starValue, movieID: @movieId}),
+                success: function (response) {
+                    if (response.success) {
+                        toastr.success(response.message, '', { timeout: 2000 });
+                       
+                    } else {
+                        toastr.error(response.message, '', { timeout: 2000 });
+                       
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error:', error);
+                }
+            });
+        }
+    </script>
+}
+
+
+

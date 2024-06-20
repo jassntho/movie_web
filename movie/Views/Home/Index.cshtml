@@ -1,0 +1,621 @@
+﻿@using PagedList.Core.Mvc
+@using PagedList
+@model PagedList.Core.IPagedList<Movie_Web.Models.Movie>
+
+@{
+    ViewData["Title"] = "HTMK Flix";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="~/cineflix-master/assets/images/icon3.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Alata' rel='stylesheet'>
+  
+   
+    <title>HTKM Flix</title>
+    
+    <!--
+      - custom css link
+    -->
+    <link rel="stylesheet" href="~/cineflix-master/assets/css/main.css">
+    <link rel="stylesheet" href="~/cineflix-master/assets/css/search.css">
+    <link rel="stylesheet" href="~/cineflix-master/assets/css/media_query.css">
+
+    <!--
+      - google font link
+    -->
+    <link href="https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900" rel="stylesheet" />
+</head>
+
+<body>
+
+
+
+
+    <!--
+      - main container
+    -->
+    <!--
+      navbar
+    -->
+    <header>
+        <div class="navbar">
+            <!-- menu button for small screen -->
+            <button class="navbar-menu-btn">
+                <span class="one"></span>
+                <span class="two"></span>
+                <span class="three"></span>
+            </button>
+            
+            <a asp-controller="Home" asp-action="Index" class="navbar-brand">
+                <img src="~/cineflix-master/assets/images/logo_newest.png" />
+            </a>
+
+            <!-- navbar navigation -->
+            <nav>
+                <ul class="navbar-nav">
+                    <li> <a asp-controller="Home" asp-action="Index" class="navbar-link">Trang chủ</a> </li>
+                    @{
+                        string urlPhimLe = $"/phim-le/page=1";
+                        string urlPHimBo = $"/phim-bo/page=1";
+                    }
+                    <li> <a href="@urlPhimLe" class="navbar-link">Phim lẻ</a> </li>
+                    <li> <a href="@urlPHimBo" class="navbar-link">Phim bộ</a> </li>
+                    <li class="dropdown">
+                        <a href="#" class="navbar-link">Thể loại</a>
+                        <ul class="dropdown-content">
+
+                            @{
+                                foreach (var item in ViewBag.Cat)
+                                {
+                                    string urlTheLoai = $"/the-loai/{item.CategoriesAlias}/page=1";
+                                    <li><a href="@urlTheLoai">@item.CategoryName.ToString()</a></li>
+                                }
+                            }
+                         
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="navbar-link">Quốc gia</a>
+                        <ul class="dropdown-content">
+
+
+                            @{
+                                foreach (var item in ViewBag.Country)
+                                {
+                                    string urlQuocGia = $"/quoc-gia/{item.CountryAlias}/page=1";
+                                    <li><a href="@urlQuocGia">@item.CountryName.ToString()</a></li>
+                                }
+                            }
+                            
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- search and sign-in -->
+            <div class="navbar-actions">
+                <form action="/tim-kiem/" class="navbar-form">
+                    <input type="text" name="search" placeholder="Tìm kiếm tại đây..." class="navbar-form-search">
+                    <button class="navbar-form-btn">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </button>
+                   
+                </form>
+
+                <!-- search button for small screen -->
+                <button class="navbar-search-btn">
+                    <ion-icon name="search-outline"></ion-icon>
+                </button>
+                @{
+                    if (ViewBag.FullName != null)
+                    {
+                        string urlDangXuat = $"/dang-xuat.html";
+
+
+                        <div  class="navbar-signin">
+                            <span>@ViewBag.FullName</span>
+                            <a href="@urlDangXuat">
+                                <ion-icon name="log-in-outline"></ion-icon>
+                            </a>
+                        </div>
+                       
+                        
+                        
+                    }
+                    else
+                    {
+                        string urlDangNhap = $"/dang-nhap.html";
+                        
+                        <a href="@urlDangNhap" class="navbar-signin">
+                            <span>Đăng nhập</span>
+                            <ion-icon name="log-in-outline"></ion-icon>
+                        </a>
+                    }
+                }
+               
+               
+            </div>
+        </div>
+    </header>
+
+    <!--
+      - MAIN SECTION
+    -->
+    <main>
+
+        <!--
+          - #BANNER SECTION
+        -->
+        <section class="banner">
+            <div class="banner-wrapper">
+                <div class="banner-container">
+                    
+                    @{
+                        for (int i = 0; i < 5; i++)
+                        {
+                            string urlMovieHot = $"/demophim/{@ViewBag.MovieHot[i].Alias}";
+                            <a href="@urlMovieHot" class="banner-card">
+                                <img src="~/images/MovieImageSlider/@ViewBag.MovieHot[i].ImageSlider.ToString()" class="banner-img" alt="">
+                                <div class="card-content">
+                                    <div class="card-info">
+                                        <div class="genre">
+                                            <ion-icon name="film"></ion-icon>
+                                            @{
+                                                int j = 0;
+                                                foreach (var item in ViewBag.MovieHot[i].Categories)
+                                                {
+                                                    if (j < ViewBag.MovieHot[i].Categories.Count - 1)
+                                                    {
+                                                        <span>@item.CategoryName / </span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>@item.CategoryName </span>
+                                                    }
+                                                    j++;
+
+                                                }
+                                            }
+                                           
+  
+                                        </div>
+                                        <div class="year">
+                                            <ion-icon name="calendar"></ion-icon>
+                                            <span>@ViewBag.MovieHot[i].PublishedYear</span>
+                                        </div>
+                                        <div class="duration">
+                                            <ion-icon name="time"></ion-icon>
+                                            <span>@ViewBag.MovieHot[i].Time</span>
+                                        </div>
+                                    </div>
+                                    <h2 class="card-title">@ViewBag.MovieHot[i].MovieName</h2>
+                                </div>
+                            </a>
+                        }
+                    }
+                    
+                </div>
+            </div>
+
+            <div class="dots">
+                <!-- Add a dot for each banner-card -->
+                <span class="dot active" onclick="currentSlide(0)"></span>
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+                <!-- Add more dots as needed -->
+            </div>
+        </section>
+
+
+
+
+
+        <!--
+          - #MOVIES SECTION
+        -->
+        <section class="movies">
+
+            <!--
+              - filter bar
+            -->
+            <!--
+              HOT-BAR
+            -->
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const titles = document.querySelectorAll(".movie-list-A .title");
+                    titles.forEach(title => {
+                        if (title.textContent.length > 20) { // Adjust length as needed
+                            title.textContent = title.textContent.substring(0, 17) + '...'; // Adjust truncation as needed
+                        }
+                    });
+                });
+            </script>
+
+            <div class="Hot-bar">
+                <div class="container1-title">
+                    <h4 style="color: #bada55;">HOT</h4>
+                </div>
+                
+                @for(int i = 0; i < 9;i++)
+                {
+                    <div class="movie-list-A">
+                        @{
+                            string urlMovie = $"/demophim/{@ViewBag.MovieHot[i].Alias}";
+                        }
+                        <a rel="bookmark" href="@urlMovie">
+                            <div class="image">
+                           
+                                <img src="~/images/MovieImage/@ViewBag.MovieHot[i].Image.ToString()" alt="#">
+                                <div class="rank"># @(i+1)</div>
+                                <div class="play-overlay"><i class="fas fa-play"></i></div>
+                            </div>
+                            <div class="text-info">
+                                <div class="title">@ViewBag.MovieHot[i].MovieName</div>
+                                <p class="movie-list-info">
+                                    <span class="movie-list-info-vote">★ 7.4</span>
+                                    <span class="movie-list-info-eps">
+                                        <i class="fas fa-clock"></i>
+                                        @ViewBag.MovieHot[i].Episode / @ViewBag.MovieHot[i].EpisodeLimit
+                                    </span>
+                                    <span class="movie-list-info-year">
+                                        <i class="fas fa-calendar-alt"></i>
+                                        @ViewBag.MovieHot[i].PublishedYear
+                                    </span>
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                }
+
+                
+
+
+            </div>
+            <!--
+              FILTER-BAR
+            -->
+            <div class="filter-bar">
+
+                <div class="filter-dropdowns">
+
+                    <select name="genre" class="genre">
+                        <option value="all genres">Tất cả thể loại</option>
+                       
+                    </select>
+
+                    <select name="year" class="year">
+                        <option value="all years">Tất cả các năm</option>
+                      
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!--
+              - movies grid
+            -->
+            <div class="movies-grid-column-8">
+                @{
+                    foreach (var item in Model)
+                    {
+                        string urlMovie1 = $"/demophim/{item.Alias}";
+                        <a href="@urlMovie1" class="movie-card">
+
+                            <div class="card-head">
+                                <img src="~/images/MovieImage/@item.Image" alt="" class="card-img">
+
+                                <div class="card-overlay">
+
+                                    <div class="bookmark">
+                                        <ion-icon name="bookmark-outline"></ion-icon>
+                                    </div>
+
+                                    <div class="rating">
+                                        <ion-icon name="star-outline"></ion-icon>
+                                        <span>N/A</span>
+                                    </div>
+
+                                    <div class="play">
+                                        <ion-icon name="play-circle-outline"></ion-icon>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="card-body">
+                                <h3 class="card-title">@item.MovieName</h3>
+
+                                
+                            </div>
+
+                        </a>
+                    }
+                }
+               
+
+                
+
+                
+            </div>
+            <!--
+              - load more button
+            -->
+          
+            <div>
+                <ul class="pagination">
+                    @{
+                        int IndexTenTrai = ViewBag.CurrentPage - 1;
+                        int IndexTenPhai = ViewBag.CurrentPage + 1;
+                        int pageMax = ViewBag.SoTrangMax;
+                        if (IndexTenTrai  <= 0)
+                        {
+                            <li class="pagination-item">
+                                <a href="" class="pagination-item__link">
+                                    <i class="pagination-item__icon fas fa-angle-left"></i>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            
+                            string urlMuiTenTrai = $"/Home/Index/?page={IndexTenTrai}";
+                            
+                            <li class="pagination-item">
+                                <a href="@urlMuiTenTrai" class="pagination-item__link">
+                                    <i class="pagination-item__icon fas fa-angle-left"></i>
+                                </a>
+                            </li>
+                        }
+
+                        for (int i = 1; i <= pageMax; i++)
+                        {
+                            string urlPage = $"/Home/Index/?page={i}";
+                            if (i == ViewBag.CurrentPage)
+                            {
+                                <li class="pagination-item--active">
+                                    <a href="@urlPage" class="pagination-item__link">@i</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="pagination-item">
+                                    <a href="@urlPage" class="pagination-item__link">@i</a>
+                                </li>
+                            }
+
+                        }
+
+                        if (IndexTenPhai > pageMax)
+                        {
+                            <li class="pagination-item">
+                                <a href="" class="pagination-item__link">
+                                    <i class="pagination-item__icon fas fa-angle-right"></i>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+
+                            string urlMuiTenPhai = $"/Home/Index/?page={IndexTenPhai}";
+
+                            <li class="pagination-item">
+                                <a href="@urlMuiTenPhai" class="pagination-item__link">
+                                    <i class="pagination-item__icon fas fa-angle-right"></i>
+                                </a>
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+
+        </section>
+
+
+
+
+
+        <!--
+          - #CATEGORY SECTION
+        -->
+        <section class="category" id="category">
+
+            <h2 class="section-heading">Thể Loại</h2>
+
+            <div class="category-grid">
+                @{
+                    string? urlTheLoai1 = $"/the-loai/hanh-dong/page=1";
+                    string? urlTheLoai2 = $"/the-loai/hai/page=1";
+                    string? urlTheLoai3 = $"/the-loai/kinh-di/page=1";
+                    string? urlTheLoai4 = $"/the-loai/chieu-rap/page=1";
+                    string? urlTheLoai5 = $"/the-loai/phieu-luu/page=1";
+                    string? urlTheLoai6 = $"/the-loai/hoat-hinh/page=1";
+                    string? urlTheLoai7 = $"/the-loai/hinh-su/page=1";
+                    string? urlTheLoai8 = $"/the-loai/vien-tuong/page=1";
+                }
+                <a href="@urlTheLoai1" class="category-card">
+                    <img src="~/cineflix-master/assets/images/action.jpg" alt="" class="card-img">
+                    
+                    <div class="name">Hành động</div>
+                   
+                </a>
+
+                <a href="@urlTheLoai2" class="category-card">
+                    <img src="~/cineflix-master/assets/images/comedy.jpg" alt="" class="card-img">
+                    <div class="name">Hài</div>
+                   
+                </a>
+
+                <a href="@urlTheLoai3" class="category-card">
+                    <img src="~/cineflix-master/assets/images/horror.jpg" alt="" class="card-img">
+                    <div class="name">Kinh dị</div>
+                    
+                </a>
+
+                <a href="@urlTheLoai4" class="category-card">
+                    <img src="~/cineflix-master/assets/images/thriller.webp" alt="" class="card-img">
+                    <div class="name">Chiếu rạp</div>
+
+                </a>
+
+                <a href="@urlTheLoai5" class="category-card">
+                    <img src="~/cineflix-master/assets/images/adventure.jpg" alt="" class="card-img">
+                    <div class="name">Phiêu lưu</div>
+                   
+                </a>
+
+                <a href="@urlTheLoai6" class="category-card">
+                    <img src="~/cineflix-master/assets/images/animated.jpg" alt="" class="card-img">
+                    <div class="name">Hoạt hình</div>
+                   
+                </a>
+
+                <a href="@urlTheLoai7" class="category-card">
+                    <img src="~/cineflix-master/assets/images/crime.jpg" alt="" class="card-img">
+                    <div class="name">Hình sự</div>
+                  
+                </a>
+
+                <a href="@urlTheLoai8" class="category-card">
+                    <img src="~/cineflix-master/assets/images/sci-fi.jpg" alt="" class="card-img">
+                    <div class="name">Viễn tưởng</div>
+                   
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+
+
+        <!--
+          - FOOTER SECTION
+        -->
+        <footer>
+
+            <div class="footer-content">
+
+                <div class="footer-brand">
+                   <img src="~/cineflix-master/assets/images/logo_newest.png" alt="" class="footer-logo">
+                    <p class="slogan">
+                        Movies & TV Shows, Online cinema,
+                        Movie database KTKM SqlServer.
+                    </p>
+
+
+                    <div class="social-link">
+
+                        <a href="#">
+                            <ion-icon name="logo-facebook"></ion-icon>
+                        </a>
+                        <a href="#">
+                            <ion-icon name="logo-twitter"></ion-icon>
+                        </a>
+                        <a href="#">
+                            <ion-icon name="logo-instagram"></ion-icon>
+                        </a>
+                        <a href="#">
+                            <ion-icon name="logo-tiktok"></ion-icon>
+                        </a>
+                        <a href="#">
+                            <ion-icon name="logo-youtube"></ion-icon>
+                        </a>
+
+                    </div>
+                </div>
+
+
+                <div class="footer-links">
+                    <ul>
+
+                        <h4 class="link-heading">HTKM Flix</h4>
+
+                        <li class="link-item"><a href="#">About us</a></li>
+                        <li class="link-item"><a href="#">My profile</a></li>
+                        <li class="link-item"><a href="#">Pricing plans</a></li>
+                        <li class="link-item"><a href="#">Contacts</a></li>
+
+                    </ul>
+
+                    <ul>
+
+                        <h4 class="link-heading">Browse</h4>
+
+                        <li class="link-item"><a href="#">Live Tv</a></li>
+                        <li class="link-item"><a href="#">Live News</a></li>
+                        <li class="link-item"><a href="#">Live Sports</a></li>
+                        <li class="link-item"><a href="#">Streaming Library</a></li>
+
+                    </ul>
+
+                    <ul>
+
+                        <li class="link-item"><a href="#">TV Shows</a></li>
+                        <li class="link-item"><a href="#">Movies</a></li>
+                        <li class="link-item"><a href="#">Kids</a></li>
+                        <li class="link-item"><a href="#">Collections</a></li>
+
+                    </ul>
+
+                    <ul>
+
+                        <h4 class="link-heading">Help</h4>
+
+                        <li class="link-item"><a href="#">Account & Billing</a></li>
+                        <li class="link-item"><a href="#">Plans & Pricing</a></li>
+                        <li class="link-item"><a href="#">Supported devices</a></li>
+                        <li class="link-item"><a href="#">Accessibility</a></li>
+
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="footer-copyright">
+
+                <div class="copyright">
+                    <p>&copy; copyright 2024 HTKM FLix</p>
+                </div>
+
+                <div class="wrapper">
+                    <a href="#">Privacy policy</a>
+                    <a href="#">Terms and conditions</a>
+                </div>
+
+            </div>
+
+        </footer>
+
+        </div>
+
+
+
+        @await Component.InvokeAsync("Notyf")
+        
+
+        <!--
+          - custom js link
+        -->
+        <script src="~/cineflix-master/assets/js/main.js"></script>
+
+        <!--
+          - ionicon link
+        -->
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

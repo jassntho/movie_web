@@ -1,0 +1,171 @@
+﻿@using PagedList.Core.Mvc
+@model PagedList.Core.IPagedList<Movie_Web.Models.Movie>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+
+<div class="content-wrapper">
+    <div class="row">
+
+
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h4 class="card-title">Quản lý phim</h4>
+                        </div>
+                        <div class="col-md-2">
+                            <p class="card-description">
+                                <a style="text-decoration: none" asp-action="Create">Create New</a>
+                            </p>
+                        </div>
+                    </div>
+                   
+                    <div class="row">
+                        <div class="col-md-3">
+                        <select class="form-select" id="txtCountryId"  name="txtCountryId" aria-label="Default select example" asp-items="ViewBag.QuocGia">
+                            <option selected>Chọn quốc gia</option>
+                            <option value="0">All</option>
+                           
+                        </select>
+                        </div>
+                        @* <div class="col-md-3">
+                            <label for="searchBox">Tim kiem</label>
+                            <input type="search" id="searchBox" placeholder="Filter...">
+                        </div> *@
+                        <div class="col-md-6">
+                          
+                            <div class="form" style=" position: relative;">
+                                <div class="row">
+                                    <i class="fa fa-search" style=" position: absolute;top:8px;left: -25px; color: #9ca3af;"></i>
+                                <input type="search" id="searchBox"  class="form-control form-input" placeholder="Tìm kiếm phim">
+                                @* <span class="left-pan"><i class="fa fa-microphone"></i></span> *@
+                            </div>
+                            </div>
+
+                        </div>
+                    </div>
+                        
+
+                    
+
+                    
+                   
+                    <div class="table-responsive">
+                        <table class="table mytable">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Movie Name
+                                    </th>
+                                    <th>
+                                        Type
+                                    </th>
+                                  
+                                    <th>
+                                        Hot
+                                    </th>
+                                    <th>
+                                        Eposide
+                                    </th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MovieName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Type.TypeName)
+                                        </td>
+                                       
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Status)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Episode)
+                                        </td>
+                                        <td>
+                                            <a style="text-decoration:none" class="badge badge-warning" asp-action="Details" asp-route-id="@item.MovieId">Details</a>
+                                            <a style="text-decoration:none" class="badge badge-success" asp-action="AddActors" asp-route-id="@item.MovieId">AddActor</a>
+                                            <a style="text-decoration:none" class="badge badge-success" asp-action="AddCat" asp-route-id="@item.MovieId">AddCat</a>
+                                            <a style="text-decoration:none" class="badge badge-info" asp-action="Edit" asp-route-id="@item.MovieId">Edit</a>
+                                            <a style="text-decoration:none" class="badge badge-danger" asp-action="Delete" asp-route-id="@item.MovieId">Delete</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <pager class="pager-container" list="@Model" options="@PagedListRenderOptions.Bootstrap4Full" asp-area="Admin" asp-controller="AdminMovies" asp-route-CountryId="@ViewBag.CurrentCountryId" asp-action="Index" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+
+  <script>
+        $(document).ready(function () {
+    // Xử lý sự kiện change cho hộp chọn txtCatID
+    jQuery('#txtCountryId').change(function () {
+
+      // Lấy giá trị đã chọn của hộp chọn
+      var countryId = $(this).children(":selected").attr("value");
+
+      // Chuyển đổi giá trị sang kiểu số
+      countryId = parseFloat(countryId);
+
+      // Xóa thuộc tính selected khỏi tất cả các tùy chọn
+                $('#txtCountryId option').removeAttr('selected');
+
+      // Đặt thuộc tính selected cho tùy chọn có giá trị tương ứng
+                $("#txtCountryId > [value=" + countryId + "]").attr("selected", "true");
+
+                $.ajax({
+                    url: '/Admin/AdminMovies/Filtter',
+                    datatype: "json",
+                    type: "GET",
+                    data: {
+                       
+                        CountryID: countryId
+                    },
+                    async: true,
+                    success: function (results) {
+                        if (results.status == "success") {
+                            window.location.href = results.redirectUrl;
+
+                            
+                        }
+                    },
+                    error: function (xhr) {
+                        alert('error');
+                    }
+                });
+
+    });
+
+  });
+
+        let options = {
+            numberPerPage: 40,
+            constNumberPerPage: 20,
+            numberOfPages: 0,
+            goBar: false,
+            pageCounter: false,
+            hasPagination:false,
+        };
+        let filterOptions = {
+            el: '#searchBox'
+        };
+        paginate.init('.mytable',options, filterOptions);
+  </script>
+}
